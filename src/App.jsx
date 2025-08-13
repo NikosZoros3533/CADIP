@@ -1,13 +1,14 @@
 import { Button } from "./components/ui/button";
+import { ThemeProvider } from "./components/theme-provider";
+import Main from "./pages/Main";
 
 function App() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg- p-4">
-      <h1 className="text-2xl font-bold">Welcome to the App</h1>
-      <Button  size="lg">
-        Click Me
-      </Button>
-    </div>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="min-h-screen p-4">
+        <Main/>
+      </div>
+    </ThemeProvider>
   );
 }
 
