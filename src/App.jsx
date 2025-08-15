@@ -2,16 +2,25 @@ import { ThemeProvider } from "./components/theme-provider";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "@/layouts/MainLayout";
 
-import Root1 from "@/pages/Root1";
-import Root2 from "@/pages/Root2";
+import AncientMonuments from "@/pages/AncientMonuments";
+import MovableAntiquities from "@/pages/MovableAntiquities";
+import Main from "./pages/Main";
+import ControlledAreas from "./pages/ControlledAreas";
+import AreasUnderReq from "./pages/AreasUnderReq";
+import SurveyedAreas from "./pages/SurveyedAreas";
+
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path="root1" element={<Root1 />} />
-          <Route path="root2" element={<Root2 />} />
+          <Route path="" element={<Main />} />
+          <Route path="ancient-monuments" element={<AncientMonuments />} />
+          <Route path="movable-antiquities" element={< MovableAntiquities/>} />
+          <Route path="controlled-areas" element={<ControlledAreas />} />
+          <Route path="areas-under-temp-requisition" element={<AreasUnderReq />} />
+          <Route path="surveyed-areas" element={<SurveyedAreas />} />
         </Route>
       </Routes>
     </ThemeProvider>
