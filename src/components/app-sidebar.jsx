@@ -111,7 +111,7 @@ export default function AppSidebar() {
   );
   return isMobile ? (
     <>
-      {<SidebarTrigger className="fixed top-1 left-2 z-50" />}
+      {<SidebarTrigger  className="relative"/>}
       {sidebar}
     </>
   ) : (
