@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-// import { Button } from "@/components/ui/button";
+
 import {
   Landmark,
   Amphora,
@@ -63,11 +63,13 @@ export default function AppSidebar() {
 
   if (isMobile) {
     console.log("Mobile Sidebar Open State:", openMobile);
+    console.log("Mobile Sidebar State:", state);
   }
 
   const location = useLocation();
-  return (
-    <Sidebar collapsible="false">
+
+  const sidebar = (
+    <Sidebar collapsible={isMobile}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center">
@@ -80,6 +82,11 @@ export default function AppSidebar() {
                   <SidebarMenuButton
                     asChild
                     isActive={location.pathname === item.url}
+                    onClick={() => {
+                      if (isMobile) {
+                        toggleSidebar();
+                      }
+                    }}
                   >
                     <Link to={item.url}>
                       <item.icon />
@@ -101,5 +108,13 @@ export default function AppSidebar() {
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
+  );
+  return isMobile ? (
+    <>
+      {<SidebarTrigger className="fixed top-1 left-2 z-50" />}
+      {sidebar}
+    </>
+  ) : (
+    sidebar
   );
 }
