@@ -7,6 +7,16 @@ import {
   MenubarShortcut,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import {
+  Settings,
+  UserCog,
+  LogOut,
+  CirclePlus,
+  Sun,
+  BookType,
+  BookOpen,
+  MapPin,
+} from "lucide-react";
 
 export default function AppMenubar() {
   return (
@@ -15,78 +25,78 @@ export default function AppMenubar() {
         <MenubarTrigger>File</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+            Settings
+            <Settings />
           </MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>Share</MenubarItem>
+          <MenubarItem>
+            My profile
+            <UserCog />
+          </MenubarItem>
+          <MenubarItem>
+            Change Theme <Sun />
+          </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>Print</MenubarItem>
+          <MenubarItem>
+            Exit
+            <LogOut />
+          </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>Edit</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+            Add
+            <CirclePlus />
           </MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>Share</MenubarItem>
+          <MenubarItem>
+            Thesaurus of Terms
+            <BookType />
+          </MenubarItem>
+          <MenubarItem>
+            Bibliographic Sources <BookOpen />
+          </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>Print</MenubarItem>
+          <MenubarItem>
+            GIS Map <MapPin />
+          </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>Search</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>
-            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-          </MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem>Share</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem>Print</MenubarItem>
+          <MenubarItem>Ancients Monuments</MenubarItem>
+          <MenubarItem>Movable Antiquities</MenubarItem>
+          <MenubarItem>Controlled Areas</MenubarItem>
+          <MenubarItem>Areas Under Temporary Requisition</MenubarItem>
+          <MenubarItem>Surveyed Areas</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>Tools</MenubarTrigger>
         <MenubarContent>
-          <MenubarItem>
-            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-          </MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem>Share</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem>Print</MenubarItem>
+          <MenubarItem>Sync Spatial Data</MenubarItem>
+          <MenubarItem>Inconsistent Spatial Data Check</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>Window</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
-          </MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem>Share</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem>Print</MenubarItem>
+            Toggle Sidebar <MenubarShortcut>Ctrl+b</MenubarShortcut>
+          </MenubarItem>        
         </MenubarContent>
       </MenubarMenu>
       <MenubarMenu>
         <MenubarTrigger>Help</MenubarTrigger>
         <MenubarContent>
           <MenubarItem>
-            New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+            About
           </MenubarItem>
-          <MenubarItem>New Window</MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>Share</MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem>Print</MenubarItem>
+          <MenubarItem>Documentation</MenubarItem>
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
