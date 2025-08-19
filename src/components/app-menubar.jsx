@@ -16,15 +16,22 @@ import {
   BookType,
   BookOpen,
   MapPin,
+  Landmark,
+  Amphora,
+  LandPlot,
+  ChartArea,
+  ShieldCheck,
+  RefreshCw,
+  CloudCheck,
+  File,
+  BookText,
 } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
 
 export default function AppMenubar() {
   return (
     <Menubar className="flex w-full justify-between fixed md:justify-end">
-      <SidebarTrigger
-        className="md:hidden"
-      />
+      <SidebarTrigger className="md:hidden" />
       <div className="flex items-center">
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -72,18 +79,39 @@ export default function AppMenubar() {
         <MenubarMenu>
           <MenubarTrigger>Search</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>Ancients Monuments</MenubarItem>
-            <MenubarItem>Movable Antiquities</MenubarItem>
-            <MenubarItem>Controlled Areas</MenubarItem>
-            <MenubarItem>Areas Under Temporary Requisition</MenubarItem>
-            <MenubarItem>Surveyed Areas</MenubarItem>
+            <MenubarItem>
+              Ancients Monuments
+              <Landmark />
+            </MenubarItem>
+            <MenubarItem>
+              Movable Antiquities
+              <Amphora />
+            </MenubarItem>
+            <MenubarItem>
+              Controlled Areas
+              <ShieldCheck />
+            </MenubarItem>
+            <MenubarItem>
+              Areas Under Temporary Requisition
+              <LandPlot />
+            </MenubarItem>
+            <MenubarItem>
+              Surveyed Areas
+              <ChartArea />
+            </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>Tools</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>Sync Spatial Data</MenubarItem>
-            <MenubarItem>Inconsistent Spatial Data Check</MenubarItem>
+            <MenubarItem>
+              Sync Spatial Data
+              <RefreshCw />
+            </MenubarItem>
+            <MenubarItem>
+              Inconsistent Spatial Data Check
+              <CloudCheck />
+            </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>
@@ -97,9 +125,15 @@ export default function AppMenubar() {
         <MenubarMenu>
           <MenubarTrigger>Help</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>About</MenubarItem>
+            <MenubarItem>
+              About
+              <BookText />
+            </MenubarItem>
             <MenubarSeparator />
-            <MenubarItem>Documentation</MenubarItem>
+            <MenubarItem>
+              Documentation
+              <File />
+            </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
       </div>
