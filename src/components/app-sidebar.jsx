@@ -53,10 +53,7 @@ const items = [
 export default function AppSidebar() {
   const {
     state,
-    open,
-    setOpen,
     openMobile,
-    setOpenMobile,
     isMobile,
     toggleSidebar,
   } = useSidebar();
