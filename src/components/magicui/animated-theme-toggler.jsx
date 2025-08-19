@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 export const AnimatedThemeToggler = ({
   className
 }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
   const buttonRef = useRef(null);
   const changeTheme = async () => {
     if (!buttonRef.current) return;
