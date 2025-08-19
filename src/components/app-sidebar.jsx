@@ -66,7 +66,7 @@ export default function AppSidebar() {
               <Button
                 variant="primary"
                 size="icon"
-                className="size-6"
+                className="size-6 hover:bg-secondary"
                 onClick={toggleSidebar}
               >
                 <X />
