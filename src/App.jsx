@@ -12,7 +12,7 @@ import SurveyedAreas from "./pages/SurveyedAreas";
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="" element={<Main />} />

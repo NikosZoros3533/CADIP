@@ -6,6 +6,7 @@ import {
   LandPlot,
   ChartArea,
   ShieldCheck,
+  X,
 } from "lucide-react";
 
 import {
@@ -21,7 +22,7 @@ import {
   useSidebar,
 } from "./ui/sidebar";
 import ThemeSwitch from "./theme-switcher";
-import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Button } from "./ui/button";
 
 const items = [
   {
@@ -51,26 +52,26 @@ const items = [
   },
 ];
 export default function AppSidebar() {
-  const {
-    state,
-    openMobile,
-    isMobile,
-    toggleSidebar,
-  } = useSidebar();
-
-  if (isMobile) {
-    console.log("Mobile Sidebar Open State:", openMobile);
-    console.log("Mobile Sidebar State:", state);
-  }
+  const { isMobile, toggleSidebar } = useSidebar();
 
   const location = useLocation();
 
-  const sidebar = (
+  return (
     <Sidebar collapsible={isMobile}>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center">
+          <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center justify-between">
             <Link to="/">CADIP</Link>
+            {isMobile && (
+              <Button
+                variant="primary"
+                size="icon"
+                className="size-6"
+                onClick={toggleSidebar}
+              >
+                <X />
+              </Button>
+            )}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -105,13 +106,5 @@ export default function AppSidebar() {
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
-  );
-  return isMobile ? (
-    <>
-      {<SidebarTrigger  className="relative"/>}
-      {sidebar}
-    </>
-  ) : (
-    sidebar
   );
 }
