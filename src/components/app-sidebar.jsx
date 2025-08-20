@@ -61,7 +61,7 @@ export default function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center justify-between">
-            <Link to="/">CADIP</Link>
+            <Link to="/" className={location.pathname === "/" ? "font-bold text-primary" : ""} >CADIP</Link>
             {isMobile && (
               <Button
                 variant="primary"

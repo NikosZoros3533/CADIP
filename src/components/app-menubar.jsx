@@ -30,8 +30,8 @@ import { SidebarTrigger } from "./ui/sidebar";
 
 export default function AppMenubar() {
   return (
-    <Menubar className="flex w-full justify-between fixed md:justify-end">
-      <SidebarTrigger className="md:hidden" />
+    <Menubar className="flex w-full justify-between fixed z-10 md:justify-end">
+      <SidebarTrigger className="md:hidden"/>
       <div className="flex items-center">
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
