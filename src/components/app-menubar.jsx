@@ -16,17 +16,13 @@ import {
   BookType,
   BookOpen,
   MapPin,
-  Landmark,
-  Amphora,
-  LandPlot,
-  ChartArea,
-  ShieldCheck,
   RefreshCw,
   CloudCheck,
   File,
   BookText,
 } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
+import { entities } from "@/lib/entities";
 
 export default function AppMenubar() {
   return (
@@ -79,26 +75,9 @@ export default function AppMenubar() {
         <MenubarMenu>
           <MenubarTrigger>Search</MenubarTrigger>
           <MenubarContent>
-            <MenubarItem>
-              Ancients Monuments
-              <Landmark />
-            </MenubarItem>
-            <MenubarItem>
-              Movable Antiquities
-              <Amphora />
-            </MenubarItem>
-            <MenubarItem>
-              Controlled Areas
-              <ShieldCheck />
-            </MenubarItem>
-            <MenubarItem>
-              Areas Under Temporary Requisition
-              <LandPlot />
-            </MenubarItem>
-            <MenubarItem>
-              Surveyed Areas
-              <ChartArea />
-            </MenubarItem>
+            {entities.map((entity) => (
+              <MenubarItem key={entity.title} className="flex items-center">{entity.title}<entity.icon/></MenubarItem>)
+            )}
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>

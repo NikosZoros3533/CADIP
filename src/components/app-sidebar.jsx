@@ -1,13 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 
-import {
-  Landmark,
-  Amphora,
-  LandPlot,
-  ChartArea,
-  ShieldCheck,
-  X,
-} from "lucide-react";
+import { X } from "lucide-react";
 
 import {
   Sidebar,
@@ -23,34 +16,8 @@ import {
 } from "./ui/sidebar";
 import ThemeSwitch from "./theme-switcher";
 import { Button } from "./ui/button";
+import { entities as items } from "../lib/entities";
 
-const items = [
-  {
-    title: "Ancient Monuments",
-    url: "/ancient-monuments",
-    icon: Landmark,
-  },
-  {
-    title: "Movable Antiquities",
-    url: "/movable-antiquities",
-    icon: Amphora,
-  },
-  {
-    title: "Controlled Areas",
-    url: "/controlled-areas",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Areas Under Temporary Requisition",
-    url: "/areas-under-temp-requisition",
-    icon: LandPlot,
-  },
-  {
-    title: "Surveyed Areas",
-    url: "/surveyed-areas",
-    icon: ChartArea,
-  },
-];
 export default function AppSidebar() {
   const { isMobile, toggleSidebar } = useSidebar();
 
@@ -61,7 +28,14 @@ export default function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center justify-between">
-            <Link to="/" className={location.pathname === "/" ? "font-bold text-primary" : ""} >CADIP</Link>
+            <Link
+              to="/"
+              className={
+                location.pathname === "/" ? "font-bold text-primary" : ""
+              }
+            >
+              CADIP
+            </Link>
             {isMobile && (
               <Button
                 variant="primary"
@@ -79,7 +53,7 @@ export default function AppSidebar() {
                 <SidebarMenuItem key={item.title} className="py-2">
                   <SidebarMenuButton
                     asChild
-                    isActive={location.pathname === item.url}
+                    isActive={location.pathname.includes(item.url)}
                     onClick={() => {
                       if (isMobile) {
                         toggleSidebar();
