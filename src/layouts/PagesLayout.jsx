@@ -11,7 +11,7 @@ export default function PagesLayout() {
   return (
     <>
       <div className="flex flex-wrap justify-between p-3 text-lg w-1/3 justify-self-center bg-muted rounded-2xl mt-1">
-          <Button variant="link" asChild><Link to={`${parentRoute}/search`}>Search</Link></Button>
+          <Button variant="link"><Link to={`${parentRoute}/search`}>Search</Link></Button>
           <Button variant="link"><Link to={`${parentRoute}`}>Browse</Link></Button>
           <Button variant="link"><Link to={`${parentRoute}/add`}>Add</Link></Button>
           <Button variant="link"><Link to={`${parentRoute}/edit`}>Edit</Link></Button>
