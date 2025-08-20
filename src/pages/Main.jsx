@@ -1,5 +1,5 @@
 import React from "react";
-import { PlusCircle,Pencil,Search,RefreshCw } from "lucide-react";
+import { PlusCircle, Pencil, Search, RefreshCw } from "lucide-react";
 import {
   Card,
   CardDescription,
@@ -22,12 +22,12 @@ const features = [
   },
   {
     Icon: Search,
-    name: "Browse",
+    name: "Search",
     description: "Browse through the data available in the system.",
   },
   {
     Icon: RefreshCw,
-    name: "Sync",
+    name: "Sync Check",
     description:
       "Sync spatial data with external sources and make inconsistent check.",
   },
@@ -37,26 +37,25 @@ export default function Main() {
   return (
     <div className="flex h-full items-start justify-center w-full">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl mt-20 mx-4 ">
-      
-       {features.map((feature) => (
-          <Card key={feature.name} className="w-full max-w-sm h-full flex flex-col justify-between hover:shadow-lg transition-shadow duration-300">
+        {features.map((feature) => (
+          <Card
+            key={feature.name}
+            className="w-full max-w-sm h-full flex flex-col justify-between hover:shadow-lg transition-shadow duration-300"
+          >
             <CardHeader>
-              <CardTitle >
-                {feature.name}
-              </CardTitle>
+              <CardTitle>{feature.name}</CardTitle>
               <CardDescription>{feature.description}</CardDescription>
             </CardHeader>
             <CardFooter className="flex justify-center">
-              <Button
-                variant="outline" asChild><feature.Icon className="w-12 h-12 text-primary cursor-pointer"/></Button>
+              <Button variant="outline" asChild>
+                <feature.Icon className="w-12 h-12 text-primary cursor-pointer" />
+              </Button>
             </CardFooter>
-          
-        </Card>
-       ))}
+          </Card>
+        ))}
       </div>
     </div>
   );
 }
-
 
 //className="flex flex-wrap justify-center gap-4 p-4 w-full mt-40 border"
