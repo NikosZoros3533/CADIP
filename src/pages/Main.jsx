@@ -8,30 +8,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {actions as features} from "@/lib/entities";
 
-const features = [
-  {
-    Icon: PlusCircle,
-    name: "Add",
-    description: "Add new data to the system.",
-  },
-  {
-    Icon: Pencil,
-    name: "Edit",
-    description: "Edit existing data in the system.",
-  },
-  {
-    Icon: Search,
-    name: "Search",
-    description: "Browse through the data available in the system.",
-  },
-  {
-    Icon: RefreshCw,
-    name: "Sync Check",
-    description:
-      "Sync spatial data with external sources and make inconsistent check.",
-  },
-];
 
 export default function Main() {
   return (
@@ -48,7 +26,7 @@ export default function Main() {
             </CardHeader>
             <CardFooter className="flex justify-center">
               <Button variant="outline" asChild>
-                <feature.Icon className="w-12 h-12 text-primary cursor-pointer" />
+                <feature.icon className="w-12 h-12 text-primary cursor-pointer" />
               </Button>
             </CardFooter>
           </Card>

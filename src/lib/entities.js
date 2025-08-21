@@ -4,6 +4,10 @@ import {
   LandPlot,
   ChartArea,
   ShieldCheck,
+  PlusCircle,
+  Pencil,
+  Search,
+  RefreshCw,
 } from "lucide-react";
 
 export const entities = [
@@ -42,5 +46,28 @@ export const entities = [
     icon: ChartArea,
     description: "Search for surveyed areas in the system.",
   },
-  
+];
+
+export const actions = [
+  {
+    icon: PlusCircle,
+    name: "Add",
+    description: "Add new data to the system.",
+  },
+  {
+    icon: Pencil,
+    name: "Edit",
+    description: "Edit existing data in the system.",
+  },
+  {
+    icon: Search,
+    name: "Search",
+    description: "Browse through the data available in the system.",
+  },
+  {
+    icon: RefreshCw,
+    name: "Sync Check",
+    description:
+      "Sync spatial data with external sources and make inconsistent check.",
+  },
 ];
