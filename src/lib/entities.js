@@ -14,6 +14,8 @@ export const entities = [
   {
     title: "Ancient Monuments",
     url: "/ancient-monuments",
+    addUrl: "/ancient-monuments/add",
+    searchUrl: "/ancient-monuments/search",
     editUrl: "/ancient-monuments/edit",
     icon: Landmark,
     description: "Search for ancient monuments in the system.",
@@ -21,6 +23,8 @@ export const entities = [
   {
     title: "Movable Antiquities",
     url: "/movable-antiquities",
+    addUrl: "/movable-antiquities/add",
+    searchUrl: "/movable-antiquities/search",
     editUrl: "/movable-antiquities/edit",
     icon: Amphora,
     description: "Search for movable antiquities in the system.",
@@ -28,6 +32,8 @@ export const entities = [
   {
     title: "Controlled Areas",
     url: "/controlled-areas",
+    addUrl: "/controlled-areas/add",
+    searchUrl: "/controlled-areas/search",
     editUrl: "/controlled-areas/edit",
     icon: ShieldCheck,
     description: "Search for controlled areas in the system.",
@@ -35,6 +41,8 @@ export const entities = [
   {
     title: "Areas Under Temporary Requisition",
     url: "/areas-under-temp-requisition",
+    addUrl: "/areas-under-temp-requisition/add",
+    searchUrl: "/areas-under-temp-requisition/search",
     editUrl: "/areas-under-temp-requisition/edit",
     icon: LandPlot,
     description: "Search for areas under temporary requisition in the system.",
@@ -42,6 +50,8 @@ export const entities = [
   {
     title: "Surveyed Areas",
     url: "/surveyed-areas",
+    addUrl: "/surveyed-areas/add",
+    searchUrl: "/surveyed-areas/search",
     editUrl: "/surveyed-areas/edit",
     icon: ChartArea,
     description: "Search for surveyed areas in the system.",
@@ -62,7 +72,7 @@ export const actions = [
   {
     icon: Search,
     name: "Search",
-    description: "Browse through the data available in the system.",
+    description: "Search through the data available in the system.",
   },
   {
     icon: RefreshCw,

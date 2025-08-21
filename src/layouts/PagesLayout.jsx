@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { PlusCircle, Pencil, Search, CircleArrowRight } from "lucide-react";
 
 export default function PagesLayout() {
@@ -12,30 +12,30 @@ export default function PagesLayout() {
 
   return (
     <>
-      <div className="flex flex-row  flex-wrap justify-between gap-2 p-2 md:p-3 text-base md:text-lg w-full md:w-1/2 lg:w-1/3 justify-self-center bg-muted rounded-2xl mt-1">
+      <div className="flex  flex-wrap justify-between gap-2 p-2 md:p-3 text-base md:text-lg w-full md:w-1/2 lg:w-1/3 justify-self-center rounded-2xl mt-1 bg-card border">
         <Button variant="ghost" asChild>
-          <Link to={`${parentRoute}`}>
+          <NavLink to={`${parentRoute}`} end>
             <span className="hidden md:inline">Browse</span>
             <CircleArrowRight className="md:ml-2" />
-          </Link>
+          </NavLink>
         </Button>
         <Button variant="ghost" asChild>
-          <Link to={`${parentRoute}/search`}>
+          <NavLink to={`${parentRoute}/search`} >
             <span className="hidden md:inline">Search</span>
             <Search className="md:ml-2" />
-          </Link>
+          </NavLink>
         </Button>
         <Button variant="ghost" asChild>
-          <Link to={`${parentRoute}/add`}>
+          <NavLink to={`${parentRoute}/add`}>
             <span className="hidden md:inline">Add</span>
             <PlusCircle className="md:ml-2" />
-          </Link>
+          </NavLink>
         </Button>
         <Button variant="ghost" asChild>
-          <Link to={`${parentRoute}/edit`}>
+          <NavLink to={`${parentRoute}/edit`}>
             <span className="hidden md:inline">Edit</span>
             <Pencil className="md:ml-2" />
-          </Link>
+          </NavLink>
         </Button>
       </div>
       <Outlet />

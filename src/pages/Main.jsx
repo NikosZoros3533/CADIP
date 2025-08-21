@@ -1,39 +1,63 @@
-import React from "react";
-import { PlusCircle, Pencil, Search, RefreshCw } from "lucide-react";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {actions as features} from "@/lib/entities";
-
+import { actions as features, entities } from "@/lib/entities";
+import GridLayout from "@/components/grid-layout";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { useNavigate } from "react-router-dom";
 
 export default function Main() {
+  // const navigate = useNavigate();
+
+  // const handleActionClick = (feature, entity) => {
+  //   switch (feature.name) {
+  //     case "Add":
+  //       console.log("add");
+  //       navigate(entity.addUrl);
+  //     case "Search":
+  //       console.log("search");
+  //       navigate(entity.searchUrl);
+  //     case "Edit":
+  //       console.log("edit");
+  //       navigate(entity.editUrl);
+  //     default:
+  //       console.log("default");
+  //       navigate(entity.url);
+  //   }
+  // };
+
   return (
-    <div className="flex h-full items-start justify-center w-full">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl mt-20 mx-4 ">
-        {features.map((feature) => (
-          <Card
-            key={feature.name}
-            className="w-full max-w-sm h-full flex flex-col justify-between hover:shadow-lg transition-shadow duration-300"
-          >
-            <CardHeader>
-              <CardTitle>{feature.name}</CardTitle>
-              <CardDescription>{feature.description}</CardDescription>
-            </CardHeader>
-            <CardFooter className="flex justify-center">
-              <Button variant="outline" asChild>
-                <feature.icon className="w-12 h-12 text-primary cursor-pointer" />
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-    </div>
+    <GridLayout columns={4}>
+      {features.map((feature) => (
+        <Popover key={feature.name}>
+          <PopoverTrigger asChild>
+            <Button variant="outline" className="cursor-pointer" size="xl">
+              <feature.icon />
+              {feature.name}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <div className="text-sm text-accent-foreground flex flex-col items-center">
+              {feature.description}
+            </div>
+            <div className="mt-2 border-t pt-2 flex gap-2 justify-center">
+              {entities.map((entity) => (
+                <Button
+                  key={entity.title}
+                  variant="outline"
+                  className="cursor-pointer mb-2"
+                  size="icon"
+
+                >
+                  <entity.icon className="w-4 h-4" />
+                </Button>
+              ))}
+            </div>
+          </PopoverContent>
+        </Popover>
+      ))}
+    </GridLayout>
   );
 }
-
-//className="flex flex-wrap justify-center gap-4 p-4 w-full mt-40 border"
