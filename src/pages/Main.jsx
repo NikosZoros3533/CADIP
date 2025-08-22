@@ -28,7 +28,7 @@ export default function Main() {
             <div className="text-sm text-accent-foreground flex flex-col items-center">
               {feature.description}
             </div>
-            <div className="mt-2 border-t pt-2 flex gap-2 justify-center">
+            <div className="mt-4 border-t pt-2 flex gap-2 justify-center">
               {entities.map((entity) => (
                 <Button
                   key={entity.title}
@@ -38,7 +38,7 @@ export default function Main() {
                   asChild
                 >
                   <Link to={`${entity.url}/${feature.helper}`}>
-                    <entity.icon className="w-4 h-4" />
+                    <entity.icon />
                   </Link>
                 </Button>
               ))}
