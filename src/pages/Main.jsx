@@ -6,27 +6,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
+
 
 export default function Main() {
-  // const navigate = useNavigate();
 
-  // const handleActionClick = (feature, entity) => {
-  //   switch (feature.name) {
-  //     case "Add":
-  //       console.log("add");
-  //       navigate(entity.addUrl);
-  //     case "Search":
-  //       console.log("search");
-  //       navigate(entity.searchUrl);
-  //     case "Edit":
-  //       console.log("edit");
-  //       navigate(entity.editUrl);
-  //     default:
-  //       console.log("default");
-  //       navigate(entity.url);
-  //   }
-  // };
+
+ 
 
   return (
     <GridLayout columns={4}>
@@ -49,9 +35,11 @@ export default function Main() {
                   variant="outline"
                   className="cursor-pointer mb-2"
                   size="icon"
-
+                  asChild
                 >
-                  <entity.icon className="w-4 h-4" />
+                  <Link to={`${entity.url}/${feature.helper}`}>
+                    <entity.icon className="w-4 h-4" />
+                  </Link>
                 </Button>
               ))}
             </div>

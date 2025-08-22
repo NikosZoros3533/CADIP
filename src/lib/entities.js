@@ -62,21 +62,25 @@ export const actions = [
   {
     icon: PlusCircle,
     name: "Add",
+    helper:"add",
     description: "Add new data to the system.",
   },
   {
     icon: Pencil,
     name: "Edit",
+    helper:"edit",
     description: "Edit existing data in the system.",
   },
   {
     icon: Search,
     name: "Search",
+    helper:"search",
     description: "Search through the data available in the system.",
   },
   {
     icon: RefreshCw,
     name: "Sync Check",
+    helper:"",
     description:
       "Sync spatial data with external sources and make inconsistent check.",
   },
