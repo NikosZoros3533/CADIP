@@ -57,7 +57,7 @@ export default function Main() {
           </Popover>
         ))}
       </GridLayout>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <Collapsible className="my-4 bg-card">
           <CollapsibleTrigger className="w-full h-full cursor-pointer hover:bg-accent p-3">
             Ancient Monuments
@@ -66,7 +66,7 @@ export default function Main() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-[100px]">Id</TableHead>
+                  <TableHead className="w-[100px]">ID</TableHead>
                   <TableHead>Declaration/Expropriation name</TableHead>
                   <TableHead>District</TableHead>
                   <TableHead>Town/Village/Quarter</TableHead>
