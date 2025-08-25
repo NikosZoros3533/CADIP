@@ -21,7 +21,7 @@ const GridLayout = ({ children, columns = 3 }) => {
         p-4
         mx-auto
         max-w-7xl
-        mt-12
+        mt-14
       `}
     >
       {children}

@@ -22,12 +22,12 @@ import {
   BookText,
 } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
-import { entities } from "@/lib/entities";
+import { entities } from "@/lib/objects";
 
 export default function AppMenubar() {
   return (
     <Menubar className="flex w-full justify-between fixed z-10 md:justify-end">
-      <SidebarTrigger className="md:hidden"/>
+      <SidebarTrigger className="md:hidden" />
       <div className="flex items-center">
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
@@ -76,8 +76,11 @@ export default function AppMenubar() {
           <MenubarTrigger>Search</MenubarTrigger>
           <MenubarContent>
             {entities.map((entity) => (
-              <MenubarItem key={entity.title} className="flex items-center">{entity.title}<entity.icon/></MenubarItem>)
-            )}
+              <MenubarItem key={entity.title} className="flex items-center">
+                {entity.title}
+                <entity.icon />
+              </MenubarItem>
+            ))}
           </MenubarContent>
         </MenubarMenu>
         <MenubarMenu>

@@ -16,7 +16,7 @@ import {
 } from "./ui/sidebar";
 import ThemeSwitch from "./theme-switcher";
 import { Button } from "./ui/button";
-import { entities as items } from "../lib/entities";
+import { entities as items } from "../lib/objects";
 
 export default function AppSidebar() {
   const { isMobile, toggleSidebar } = useSidebar();

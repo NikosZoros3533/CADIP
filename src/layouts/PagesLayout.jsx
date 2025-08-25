@@ -31,12 +31,6 @@ export default function PagesLayout() {
             <PlusCircle className="md:ml-2" />
           </NavLink>
         </Button>
-        <Button variant="ghost" asChild>
-          <NavLink to={`${parentRoute}/edit`}>
-            <span className="hidden md:inline">Edit</span>
-            <Pencil className="md:ml-2" />
-          </NavLink>
-        </Button>
       </div>
       <Outlet />
     </>
