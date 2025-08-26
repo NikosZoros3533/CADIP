@@ -5,6 +5,6 @@ export default function () {
       const params = useParams();
 
   return (
-    <div>Ancient Edit Item with {params.id}</div>
+    <div>Surveyed Area Item with {params.id}</div>
   )
 }
