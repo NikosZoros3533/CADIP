@@ -13,8 +13,6 @@ import { Link } from "react-router-dom";
 import CollapsibleComponent from "@/components/collapsible";
 
 export default function Main() {
-
- 
   return (
     <>
       <GridLayout columns={2}>

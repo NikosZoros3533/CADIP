@@ -22,6 +22,7 @@ const GridLayout = ({ children, columns = 3 }) => {
         mx-auto
         max-w-7xl
         mt-14
+        items-stretch
       `}
     >
       {children}
