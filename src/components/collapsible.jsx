@@ -7,15 +7,19 @@ import {
 } from "./ui/collapsible";
 import { ScrollArea } from "./ui/scroll-area";
 import {
-    Table,
+  Table,
   TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "./ui/table";
+import { useNavigate } from "react-router-dom";
 
 export default function CollapsibleComponent({ entity }) {
+  const navigate = useNavigate();
+  const handleShow = (id, url) => navigate(`${url}/${id}`);
+  const handleEdit = (id, url) => navigate(`${url}/${id}/edit`);
   return (
     <Collapsible className="bg-card flex flex-col gap-2 border p-1 rounded-lg">
       <div className="flex items-center justify-between gap-4 px-4">
@@ -32,7 +36,7 @@ export default function CollapsibleComponent({ entity }) {
             <TableHeader>
               <TableRow>
                 <TableHead className="w-[100px]">ID</TableHead>
-                <TableHead>Declaration/Expropriation name</TableHead>
+                <TableHead>Name</TableHead>
                 <TableHead>District</TableHead>
                 <TableHead>Town/Village/Quarter</TableHead>
                 <TableHead>Recorded by</TableHead>
@@ -50,9 +54,9 @@ export default function CollapsibleComponent({ entity }) {
                   <TableCell className="text-right">
                     <div>
                       <Button
-                        // onClick={() =>
-                        //   handleShow(monument.id, "ancient-monuments")
-                        // }
+                        onClick={() =>
+                          handleShow(monument.id, entity.url)
+                        }
                         variant="secondary"
                         size="small"
                         className="mr-1 text-xs p-1 cursor-pointer"
@@ -61,9 +65,9 @@ export default function CollapsibleComponent({ entity }) {
                         Show
                       </Button>
                       <Button
-                        // onClick={() =>
-                        //   handleEdit(monument.id, "ancient-monuments")
-                        // }
+                        onClick={() =>
+                          handleEdit(monument.id, entity.url)
+                        }
                         size="small"
                         variant="outline"
                         className="text-xs p-1 cursor-pointer"
@@ -80,5 +84,7 @@ export default function CollapsibleComponent({ entity }) {
         </ScrollArea>
       </CollapsibleContent>
     </Collapsible>
+
+  
   );
 }

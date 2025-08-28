@@ -9,13 +9,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CollapsibleComponent from "@/components/collapsible";
 
 export default function Main() {
-  const navigate = useNavigate();
-  const handleShow = (id, url) => navigate(`/${url}/${id}`);
-  const handleEdit = (id, url) => navigate(`/${url}/${id}/edit`);
+
+ 
   return (
     <>
       <GridLayout columns={2}>
