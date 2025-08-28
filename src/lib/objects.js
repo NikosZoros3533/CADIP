@@ -5,9 +5,7 @@ import {
   ChartArea,
   ShieldCheck,
   PlusCircle,
-  Pencil,
   Search,
-  RefreshCw,
 } from "lucide-react";
 
 export const entities = [
