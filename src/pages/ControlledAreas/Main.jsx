@@ -1,6 +1,13 @@
+import Card from "@/components/card";
+import GridLayout from "../../components/grid-layout";
+import { controlledAreas } from "@/lib/objects";
 
 export default function ControlledAreas() {
   return (
-    <div className="p-4 text-lg">This is Controlled Areas</div>
-  )
+    <GridLayout columns={4}>
+      {controlledAreas.map((area, idx) => (
+        <Card key={idx} object={area} />
+      ))}
+    </GridLayout>
+  );
 }

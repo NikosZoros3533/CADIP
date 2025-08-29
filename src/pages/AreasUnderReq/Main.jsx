@@ -1,7 +1,13 @@
-
+import Card from "@/components/card";
+import GridLayout from "../../components/grid-layout";
+import { areasUnderTempReq } from "@/lib/objects";
 
 export default function AreasUnderReq() {
   return (
-    <div className="p-4 text-lg">This is Areas Under Temporary Requisition</div>
-  )
+    <GridLayout columns={4}>
+      {areasUnderTempReq.map((area, idx) => (
+        <Card key={idx} object={area} />
+      ))}
+    </GridLayout>
+  );
 }

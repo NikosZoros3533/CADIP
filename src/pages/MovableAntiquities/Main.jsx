@@ -1,5 +1,13 @@
-import React from "react";
+import Card from "@/components/card";
+import GridLayout from "../../components/grid-layout";
+import { movableAntiquities } from "@/lib/objects";
 
 export default function MovableAntiquities() {
-  return <div className="p-4 text-lg">This is Movable Antiquities</div>;
+  return (
+    <GridLayout columns={4}>
+      {movableAntiquities.map((antiquity, idx) => (
+        <Card key={idx} object={antiquity} />
+      ))}
+    </GridLayout>
+  );
 }

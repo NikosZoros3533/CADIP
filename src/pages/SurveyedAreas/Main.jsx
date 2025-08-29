@@ -1,5 +1,13 @@
+import Card from "@/components/card";
+import GridLayout from "../../components/grid-layout";
+import { surveyedAreas } from "@/lib/objects";
+
 export default function SurveyedAreas() {
   return (
-    <div className="p-4 text-lg">This is Surveyed Areas</div>
+    <GridLayout columns={4}>
+      {surveyedAreas.map((area, idx) => (
+        <Card key={idx} object={area} />
+      ))}
+    </GridLayout>
   );
 }

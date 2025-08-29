@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   actions as features,
-  entities,
+  entities
 } from "@/lib/objects";
 import GridLayout from "@/components/grid-layout";
 import {
@@ -12,7 +12,9 @@ import {
 import { Link } from "react-router-dom";
 import CollapsibleComponent from "@/components/collapsible";
 
+
 export default function Main() {
+
   return (
     <>
       <GridLayout columns={2}>
