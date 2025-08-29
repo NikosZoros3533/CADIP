@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { PlusCircle, Pencil, Search, CircleArrowRight } from "lucide-react";
+import {
+  PlusCircle,
+  Search,
+  CircleArrowRight,
+} from "lucide-react";
 
 export default function PagesLayout() {
   const location = useLocation();
@@ -20,7 +24,7 @@ export default function PagesLayout() {
           </NavLink>
         </Button>
         <Button variant="ghost" asChild>
-          <NavLink to={`${parentRoute}/search`} >
+          <NavLink to={`${parentRoute}/search`}>
             <span className="hidden md:inline">Search</span>
             <Search className="md:ml-2" />
           </NavLink>
