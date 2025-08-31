@@ -1,9 +1,7 @@
 import Card from "@/components/card";
 import GridLayout from "../../components/grid-layout";
 import { ancientMonuments } from "@/lib/objects";
-import { Grid2x2, List } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -12,28 +10,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useOutletContext } from "react-router-dom";
 
 export default function AncientMonuments() {
-  const [isGrid, setIsGrid] = useState(true);
+  const { isGrid } = useOutletContext();
 
   return (
     <>
-      <div className="flex flex-wrap justify-end gap-2 p-2 lg:mr-45">
-        <Button
-          size="icon"
-          variant={isGrid ? "outline" : "ghost"}
-          onClick={() => setIsGrid(true)}
-        >
-          <Grid2x2 />
-        </Button>
-        <Button
-          size="icon"
-          variant={isGrid ? "ghost" : "outline"}
-          onClick={() => setIsGrid(false)}
-        >
-          <List />
-        </Button>
-      </div>
       {isGrid ? (
         <GridLayout columns={4}>
           {ancientMonuments.map((monument, idx) => (

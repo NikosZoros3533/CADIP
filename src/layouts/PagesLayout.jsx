@@ -1,10 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import {
-  PlusCircle,
-  Search,
-  CircleArrowRight,
-} from "lucide-react";
+import { PlusCircle, Search, CircleArrowRight, Grid2x2, List } from "lucide-react";
+import { useState } from "react";
 
 export default function PagesLayout() {
   const location = useLocation();
@@ -13,6 +10,7 @@ export default function PagesLayout() {
     return segments.length > 0 ? `/${segments[0]}` : "/";
   }
   const parentRoute = getParentRoute();
+  const [isGrid, setIsGrid] = useState(true);
 
   return (
     <>
@@ -36,7 +34,23 @@ export default function PagesLayout() {
           </NavLink>
         </Button>
       </div>
-      <Outlet />
+      <div className="flex flex-wrap justify-end gap-2 p-4 mx-auto max-w-7xl">
+        <Button
+          size="icon"
+          variant={isGrid ? "outline" : "ghost"}
+          onClick={() => setIsGrid(true)}
+        >
+          <Grid2x2 />
+        </Button>
+        <Button
+          size="icon"
+          variant={isGrid ? "ghost" : "outline"}
+          onClick={() => setIsGrid(false)}
+        >
+          <List />
+        </Button>
+      </div>
+      <Outlet context={{isGrid}}/>
     </>
   );
 }
