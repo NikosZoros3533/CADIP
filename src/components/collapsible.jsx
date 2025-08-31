@@ -79,7 +79,7 @@ export default function CollapsibleComponent({ entity }) {
                       <Button
                         onClick={() => handleShow(object.id, entity.url)}
                         variant="secondary"
-                        size="small"
+                        size="sm"
                         className="mr-1 text-xs p-1 cursor-pointer"
                         aria-label={`Show details for ${object.name}`}
                       >
@@ -87,7 +87,7 @@ export default function CollapsibleComponent({ entity }) {
                       </Button>
                       <Button
                         onClick={() => handleEdit(object.id, entity.url)}
-                        size="small"
+                        size="sm"
                         variant="outline"
                         className="text-xs p-1 cursor-pointer"
                         aria-label={`Edit ${object.name}`}
