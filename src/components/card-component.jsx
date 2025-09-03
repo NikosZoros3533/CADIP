@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
-export default function Card({ object }) {
+export default function CardComponent({ object }) {
   const navigate = useNavigate();
   return (
     <div className="bg-card rounded-2xl shadow-md border overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
