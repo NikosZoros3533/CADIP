@@ -17,7 +17,7 @@ export default function AncientMonuments() {
         </GridLayout>
       ) : (
         <div className="px-4 py-6">
-          <div className="overflow-x-auto w-full">
+          <div className="overflow-x-auto w-full p-10 border-2 rounded-2xl">
             <TableComponent objects={ancientMonuments}/>
           </div>
         </div>

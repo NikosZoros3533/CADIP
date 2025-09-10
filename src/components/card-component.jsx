@@ -16,10 +16,10 @@ export default function CardComponent({ object }) {
 
       {/* Content */}
       <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-base font-semibold line-clamp-2">
+        <h3 className="text-lg font-bold line-clamp-2">
           {object.name}
         </h3>
-        <div className="text-sm text-foreground/70 mt-2 space-y-1 flex-1">
+        <div className="text-sm text-foreground/60 mt-2 space-y-1 flex-1">
           <p className="truncate">
             <span className="font-medium">District:</span>{" "}
             {object.district}

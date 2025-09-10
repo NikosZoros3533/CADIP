@@ -14,7 +14,7 @@ export default function PagesLayout() {
 
   return (
     <>
-      <div className="flex  flex-wrap justify-between gap-2 p-2 md:p-3 text-base md:text-lg w-full md:w-1/2 lg:w-1/3 justify-self-center rounded-2xl mt-1 bg-card border">
+      <div className="flex flex-wrap justify-between gap-2 p-2 md:p-3 text-base md:text-lg w-full md:w-1/2 lg:w-1/3 justify-self-center rounded-2xl mt-6 bg-card border">
         <Button variant="ghost" asChild>
           <NavLink to={`${parentRoute}`} end>
             <span className="hidden md:inline">Browse</span>

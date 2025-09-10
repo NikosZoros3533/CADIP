@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Eye,Pencil  } from "lucide-react";
 
 export default function TableComponent({ objects }) {
   return (
@@ -33,19 +34,19 @@ export default function TableComponent({ objects }) {
                 <div className="flex gap-1 justify-end">
                   <Button
                     onClick={() => handleShow(object.id, entity.url)}
-                    variant="secondary"
-                    size="xs"
-                    className="text-xs p-1"
+                    variant="ghost"
+                    size="icon"
+                    
                   >
-                    Show
+                    <Eye/>
                   </Button>
                   <Button
                     onClick={() => handleEdit(object.id, entity.url)}
-                    size="xs"
-                    variant="outline"
-                    className="text-xs p-1"
+                    size="icon"
+                    variant="ghost"
+                    
                   >
-                    Edit
+                    <Pencil/>
                   </Button>
                 </div>
               </TableCell>
