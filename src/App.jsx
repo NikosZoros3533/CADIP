@@ -29,7 +29,6 @@ import MovableEdit from "./pages/MovableAntiquities/ItemEdit";
 import SurveyedDetail from "./pages/SurveyedAreas/Detail";
 import SurveyedEdit from "./pages/SurveyedAreas/ItemEdit";
 
-
 function App() {
   return (
     <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
@@ -69,7 +68,7 @@ function App() {
               <Route index element={<SurveyedAreas />} />
               <Route path="add" element={<SurveyedAreasAdd />} />
               <Route path="search" element={<SurveyedAreasSearch />} />
-                <Route path=":id" element={<SurveyedDetail />} />
+              <Route path=":id" element={<SurveyedDetail />} />
               <Route path=":id/edit" element={<SurveyedEdit />} />
             </Route>
           </Route>
