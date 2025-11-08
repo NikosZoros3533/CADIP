@@ -16,6 +16,10 @@ export default function AppBreadcrumb() {
   const childRoute = getChildRoute(location);
   const entityToShow = entities.find((entity) => entity.url === parentRoute);
   const actionToShow = actions.find((action) => action.helper === childRoute);
+  let itemUrl = null;
+  if (childRoute && !actionToShow) {
+    itemUrl = childRoute;
+  }
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -23,12 +27,12 @@ export default function AppBreadcrumb() {
           <BreadcrumbLink href="/">Home</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        {!childRoute && parentRoute && (
+        {!childRoute && entityToShow && (
           <BreadcrumbItem>
             <BreadcrumbPage>{entityToShow.title}</BreadcrumbPage>
           </BreadcrumbItem>
         )}
-        {childRoute && parentRoute && (
+        {childRoute && actionToShow && (
           <>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
@@ -39,6 +43,21 @@ export default function AppBreadcrumb() {
             <BreadcrumbItem>
               <BreadcrumbPage>
                 <actionToShow.icon className="w-4 h-4" />
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </>
+        )}
+        {childRoute && itemUrl && (
+          <>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to={entityToShow.url}>{entityToShow.title}</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>
+                {itemUrl}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </>
