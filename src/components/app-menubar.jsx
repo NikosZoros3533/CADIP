@@ -22,7 +22,7 @@ import {
   BookText,
 } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
-import { entities } from "@/lib/objects";
+import { entities } from "@/lib/constants";
 
 export default function AppMenubar() {
   return (

@@ -1,8 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  actions as features,
-  entities
-} from "@/lib/objects";
+import { actions as features, entities } from "@/lib/constants";
 import GridLayout from "@/components/grid-layout";
 import {
   Popover,
@@ -12,9 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import CollapsibleComponent from "@/components/collapsible";
 
-
 export default function Main() {
-
   return (
     <>
       <GridLayout columns={2}>
@@ -51,7 +46,9 @@ export default function Main() {
       </GridLayout>
       <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-[repeat(5,1fr)] gap-2 min-h-full p-6">
         <div className="md:col-span-3 md:row-span-5 flex flex-col gap-4">
-          {entities.map((entity)=><CollapsibleComponent key={entity.title} entity={entity}/>)}
+          {entities.map((entity) => (
+            <CollapsibleComponent key={entity.title} entity={entity} />
+          ))}
         </div>
         <div className="md:col-span-2 md:col-start-4 md:row-span-3 bg-muted rounded-lg flex items-center justify-center">
           <span className=" text-muted-foreground text-lg">
