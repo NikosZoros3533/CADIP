@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { getChildRoute, getParentRoute } from "@/lib/utils";
+import AppBreadcrumb from "@/components/app-breadcrumb";
 
 export default function PagesLayout() {
   const location = useLocation();
@@ -38,24 +39,29 @@ export default function PagesLayout() {
           </NavLink>
         </Button>
       </div>
-      {!childRoute && (
-        <div className="flex flex-wrap justify-end gap-2 p-4 mx-auto max-w-7xl">
-          <Button
-            size="icon"
-            variant={isGrid ? "outline" : "ghost"}
-            onClick={() => setIsGrid(true)}
-          >
-            <Grid2x2 />
-          </Button>
-          <Button
-            size="icon"
-            variant={isGrid ? "ghost" : "outline"}
-            onClick={() => setIsGrid(false)}
-          >
-            <List />
-          </Button>
-        </div>
-      )}
+
+      <div className="flex flex-wrap justify-between gap-2 p-6 mx-auto max-w-7xl">
+        <AppBreadcrumb/>
+        {!childRoute && (
+          <div>
+            <Button
+              size="icon"
+              variant={isGrid ? "outline" : "ghost"}
+              onClick={() => setIsGrid(true)}
+            >
+              <Grid2x2 />
+            </Button>
+            <Button
+              size="icon"
+              variant={isGrid ? "ghost" : "outline"}
+              onClick={() => setIsGrid(false)}
+            >
+              <List />
+            </Button>
+          </div>
+        )}
+      </div>
+
       <Outlet context={{ isGrid }} />
     </>
   );
