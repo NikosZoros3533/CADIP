@@ -1,5 +1,5 @@
 import GridLayout from "../../components/grid-layout";
-import CardComponent from "@/components/card-component";
+import CardComponent from "@/components/ancientMonuments/card-component";
 
 export default function MovableAntiquities() {
   return (

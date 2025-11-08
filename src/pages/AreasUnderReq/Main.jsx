@@ -1,5 +1,5 @@
 import GridLayout from "../../components/grid-layout";
-import CardComponent from "@/components/card-component";
+import CardComponent from "@/components/ancientMonuments/card-component";
 import { useOutletContext } from "react-router-dom";
 import TableComponent from "@/components/table-component";
 
@@ -21,8 +21,6 @@ export default function AreasUnderReq() {
     //     </div>
     //   )}
     // </>
-    <h1>
-      Hello
-    </h1>
+    <h1>Hello</h1>
   );
 }
