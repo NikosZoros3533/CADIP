@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
-export default function CardComponent({ object }) {
+export default function AMCardComponent({ object }) {
   const navigate = useNavigate();
   return (
     <div className="bg-card rounded-2xl shadow-md border overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
@@ -16,20 +16,18 @@ export default function CardComponent({ object }) {
 
       {/* Content */}
       <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-lg font-bold line-clamp-2">
-          {object.name}
-        </h3>
+        <h3 className="text-lg font-bold line-clamp-2">{object.name}</h3>
         <div className="text-sm text-foreground/60 mt-2 space-y-1 flex-1">
           <p className="truncate">
-            <span className="font-medium">District:</span>{" "}
-            {object.district}
+            <span className="font-medium">ID:</span> {object.id}
           </p>
           <p className="truncate">
-            <span className="font-medium">Town:</span> {object.town}
+            <span className="font-medium">Monument Number:</span>{" "}
+            {object.monumentNumber}
           </p>
-          <p className="truncate">
-            <span className="font-medium">Recorded by:</span>{" "}
-            {object.recordedBy}
+          <p>
+            <span className="font-medium">Recorded Date: </span>
+            {object.recordedAtAgo}
           </p>
         </div>
         {/* Actions pinned to bottom */}

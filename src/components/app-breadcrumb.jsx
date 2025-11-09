@@ -20,6 +20,12 @@ export default function AppBreadcrumb() {
   if (childRoute && !actionToShow) {
     itemUrl = childRoute;
   }
+  //  console.log("parentRoute:", location);
+  // console.log("parentRoute:", parentRoute);
+  // console.log("child Route:", childRoute);
+  // console.log("entity To Show:", entityToShow);
+  // console.log("itemUrl:", itemUrl);
+
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -56,9 +62,7 @@ export default function AppBreadcrumb() {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>
-                {itemUrl}
-              </BreadcrumbPage>
+              <BreadcrumbPage>{itemUrl}</BreadcrumbPage>
             </BreadcrumbItem>
           </>
         )}
