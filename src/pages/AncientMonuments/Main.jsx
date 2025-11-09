@@ -9,7 +9,7 @@ import AMCardComponent from "@/components/ancientMonuments/card-component";
 import { Spinner } from "@/components/ui/spinner";
 
 export default function AncientMonuments() {
-  // const { isGrid } = useOutletContext();
+  const { isGrid } = useOutletContext();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -33,31 +33,24 @@ export default function AncientMonuments() {
 
   return (
     <div>
-      {/* {isGrid ? (
-        <GridLayout columns={4}>
-          {ancientMonuments.map((monument, idx) => (
-            <CardComponent key={idx} object={monument} />
-          ))}
-        </GridLayout>
-      ) : (
-        <div className="px-4 py-6">
-          <div className="overflow-x-auto w-full p-10 border-2 rounded-2xl">
-            <TableComponent objects={ancientMonuments} />
-          </div>
-        </div>
-      )} */}
       {loading && (
         <div className="h-screen flex items-start justify-center">
           <Spinner className="w-10 h-10" />
         </div>
       )}
       {error && <p style={{ color: "red" }}>{error}</p>}
-      {data && (
+      {data && isGrid ? (
         <GridLayout columns={4}>
           {data.map((entity) => (
             <AMCardComponent key={entity.id} object={entity} />
           ))}
         </GridLayout>
+      ) : (
+        <div className="px-4 py-6">
+          <div className="overflow-x-auto w-full p-10 border-2 rounded-2xl">
+            <TableComponent objects={data} />
+          </div>
+        </div>
       )}
     </div>
   );
