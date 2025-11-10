@@ -19,15 +19,18 @@ import {
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
 import { useForm } from "@tanstack/react-form";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { entities } from "@/lib/constants";
+import { postEntity } from "@/services/api";
 const formSchema = z.object({
   name: z.string().nonempty(),
   description: z.string(),
   isRecordCompleted: z.boolean(),
 });
+
+const entity = entities[0];
 
 export default function AncientMonumentsAdd() {
   const form = useForm({
@@ -38,6 +41,7 @@ export default function AncientMonumentsAdd() {
     },
     validators: {
       onSubmit: formSchema,
+      onBlur: formSchema,
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
@@ -54,13 +58,13 @@ export default function AncientMonumentsAdd() {
           "--border-radius": "calc(var(--radius)  + 4px)",
         },
       });
-      console.log(value);
+      postEntity(entity.fetchUrl, value);
     },
   });
 
   return (
     <div className="flex items-center justify-center p-12">
-      <div className="w-full max-w-md p-14">
+      <div className="w-full p-14m">
         <form
           id="ancient-monuments-add"
           onSubmit={(e) => {
@@ -70,10 +74,12 @@ export default function AncientMonumentsAdd() {
         >
           <FieldGroup>
             <FieldSet>
-              <FieldLegend>Add a new Ancient Monument</FieldLegend>
-              <FieldDescription>
-                All transactions are secure and encrypted
-              </FieldDescription>
+              <div className="flex flex-col items-center">
+                <FieldLegend>Add a new Ancient Monument</FieldLegend>
+                <FieldDescription>
+                  All transactions are secure and encrypted
+                </FieldDescription>
+              </div>
               <FieldGroup>
                 <form.Field
                   name="name"
@@ -128,24 +134,32 @@ export default function AncientMonumentsAdd() {
                   }}
                 />
                 <form.Field
-                  name="isRecordedCompleted"
+                  name="isRecordCompleted"
                   children={(field) => {
                     const isInvalid =
                       field.state.meta.isTouched && !field.state.meta.isValid;
                     return (
-                      <Field data-invalid={isInvalid} orientation="horizontal">
-                        <FieldLabel htmlFor={field.name}>
-                          Record Completed
-                        </FieldLabel>
-                        <Checkbox
-                          id={field.name}
-                          name={field.name}
-                          checked={field.state.value}
-                          onCheckedChange={(checked) =>
-                            field.handleChange(checked === true)
-                          }
-                        />
-                      </Field>
+                      <FieldGroup data-slot="checkbox-group">
+                        <Field data-invalid={isInvalid} orientation="h">
+                          <Checkbox
+                            id={field.name}
+                            name={field.name}
+                            checked={field.state.value}
+                            onCheckedChange={(checked) =>
+                              field.handleChange(checked === true)
+                            }
+                          />
+                          <FieldLabel
+                            htmlFor={field.name}
+                            className="flex-none"
+                          >
+                            Record Completed
+                          </FieldLabel>
+                        </Field>
+                        {isInvalid && (
+                          <FieldError errors={field.state.meta.errors} />
+                        )}
+                      </FieldGroup>
                     );
                   }}
                 />

@@ -8,8 +8,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Eye, Pencil } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function TableComponent({ objects }) {
+  const navigate = useNavigate()
   const district = "Cyprus";
   return (
     <Table className="min-w-[600px]">
@@ -34,14 +36,14 @@ export default function TableComponent({ objects }) {
             <TableCell className="text-right">
               <div className="flex gap-1 justify-end">
                 <Button
-                  onClick={() => handleShow(object.id, entity.url)}
+                  onClick={() => navigate(`${object.id}`)}
                   variant="ghost"
                   size="icon"
                 >
                   <Eye />
                 </Button>
                 <Button
-                  onClick={() => handleEdit(object.id, entity.url)}
+                  onClick={() => navigate(`${object.id}/edit`)}
                   size="icon"
                   variant="ghost"
                 >

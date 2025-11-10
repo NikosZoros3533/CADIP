@@ -1,6 +1,5 @@
 import GridLayout from "../../components/grid-layout";
 import { useOutletContext } from "react-router-dom";
-import CardComponent from "@/components/ancientMonuments/card-component";
 import TableComponent from "@/components/table-component";
 import { getEntities } from "@/services/api";
 import { entities } from "@/lib/constants";

@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/popover";
 import { Link } from "react-router-dom";
 import CollapsibleComponent from "@/components/collapsible";
+import { BookType } from "lucide-react";
+import { VocabsCombobox } from "@/components/vocabularies-combobox";
 
 export default function Main() {
   return (
@@ -49,6 +51,21 @@ export default function Main() {
           {entities.map((entity) => (
             <CollapsibleComponent key={entity.title} entity={entity} />
           ))}
+          <section className="py-16">
+            <div className="container">
+              <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+                <div className="flex flex-col px-8 py-10 border rounded-4xl">
+                  <div className="mb-5 flex size-16 items-center justify-center rounded-full">
+                    <BookType className="w-10 h-10" />
+                  </div>
+                  <h3 className="mb-2 text-xl font-semibold">
+                    Thesaurus of Terms
+                  </h3>
+                  <VocabsCombobox />
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
         <div className="md:col-span-2 md:col-start-4 md:row-span-3 bg-muted rounded-lg flex items-center justify-center">
           <span className=" text-muted-foreground text-lg">

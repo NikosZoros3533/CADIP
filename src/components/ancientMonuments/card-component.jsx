@@ -35,14 +35,14 @@ export default function AMCardComponent({ object }) {
           <Button
             size="sm"
             variant="secondary"
-            onClick={() => navigate(object.url)}
+            onClick={() => navigate(`${object.id}`)}
           >
             Show
           </Button>
           <Button
             size="sm"
             variant="outline"
-            onClick={() => navigate(`${object.url}/edit`)}
+            onClick={() => navigate(`${object.id}/edit`)}
           >
             Edit
           </Button>

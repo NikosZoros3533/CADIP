@@ -32,9 +32,9 @@ export default function PagesLayout() {
             <Search className="md:ml-2" />
           </NavLink>
         </Button>
-        <Button variant="ghost" asChild>
+        <Button asChild >
           <NavLink to={`${parentRoute}/add`}>
-            <span className="hidden md:inline">Add</span>
+            <span className="hidden md:inline">New</span>
             <PlusCircle className="md:ml-2" />
           </NavLink>
         </Button>
@@ -46,14 +46,14 @@ export default function PagesLayout() {
           <div>
             <Button
               size="icon"
-              variant={isGrid ? "outline" : "ghost"}
+              variant={isGrid ? "" : "ghost"}
               onClick={() => setIsGrid(true)}
             >
               <Grid2x2 />
             </Button>
             <Button
               size="icon"
-              variant={isGrid ? "ghost" : "outline"}
+              variant={isGrid ? "ghost" : ""}
               onClick={() => setIsGrid(false)}
             >
               <List />
