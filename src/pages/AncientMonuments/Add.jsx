@@ -9,13 +9,13 @@ import {
   FieldSet,
   FieldError,
 } from "@/components/ui/field";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -64,8 +64,8 @@ export default function AncientMonumentsAdd() {
   });
 
   return (
-    <div className="flex items-center justify-center p-12">
-      <div className="w-full p-14m">
+    <div className="flex items-center justify-center p-10">
+      <div className="w-full p-12">
         <form
           id="ancient-monuments-add"
           onSubmit={(e) => {
@@ -76,7 +76,9 @@ export default function AncientMonumentsAdd() {
           <FieldGroup>
             <FieldSet>
               <div className="flex flex-col items-center">
-                <FieldLegend>Add a new Ancient Monument</FieldLegend>
+                <FieldLegend>
+                  Add a new Ancient Monument
+                </FieldLegend>
                 <FieldDescription>
                   All transactions are secure and encrypted
                 </FieldDescription>
