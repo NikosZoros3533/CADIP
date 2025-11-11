@@ -11,7 +11,7 @@ import { Eye, Pencil } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function TableComponent({ objects }) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const district = "Cyprus";
   return (
     <Table className="min-w-[600px]">

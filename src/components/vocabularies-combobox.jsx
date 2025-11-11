@@ -29,7 +29,7 @@ export function VocabsCombobox() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-[200px] justify-between truncate"
         >
           {value
             ? vocabs.find((vocab) => vocab.name === value)?.displayName

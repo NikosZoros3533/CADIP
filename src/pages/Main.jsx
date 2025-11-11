@@ -8,8 +8,15 @@ import {
 } from "@/components/ui/popover";
 import { Link } from "react-router-dom";
 import CollapsibleComponent from "@/components/collapsible";
-import { BookType } from "lucide-react";
+import { BookType, CircleUserRound } from "lucide-react";
 import { VocabsCombobox } from "@/components/vocabularies-combobox";
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Main() {
   return (
@@ -51,21 +58,33 @@ export default function Main() {
           {entities.map((entity) => (
             <CollapsibleComponent key={entity.title} entity={entity} />
           ))}
-          <section className="py-16">
-            <div className="container">
-              <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-                <div className="flex flex-col px-8 py-10 border rounded-4xl">
-                  <div className="mb-5 flex size-16 items-center justify-center rounded-full">
-                    <BookType className="w-10 h-10" />
-                  </div>
-                  <h3 className="mb-2 text-xl font-semibold">
-                    Thesaurus of Terms
-                  </h3>
-                  <VocabsCombobox />
+
+          <GridLayout columns={2}>
+            <Card className="w-full min-w-sm max-w-sm">
+              <CardHeader>
+                <div className="flex flex-row justify-between py-2 items-center">
+                  <CardTitle>Profile</CardTitle>
+                  <CircleUserRound />
                 </div>
-              </div>
-            </div>
-          </section>
+                <CardDescription>Manage your profile settings</CardDescription>
+              </CardHeader>
+              <CardAction>
+                <Button variant="link">Go to Settings</Button>
+              </CardAction>
+            </Card>
+            <Card className="w-full min-w-sm max-w-sm">
+              <CardHeader>
+                <div className="flex flex-row justify-between py-2 items-center">
+                  <CardTitle>Thesaurus of Terms</CardTitle>
+                  <BookType />
+                </div>
+                <CardDescription>Manage your profile settings</CardDescription>
+              </CardHeader>
+              <CardAction>
+                <Button variant="link">Go to Terms</Button>
+              </CardAction>
+            </Card>
+          </GridLayout>
         </div>
         <div className="md:col-span-2 md:col-start-4 md:row-span-3 bg-muted rounded-lg flex items-center justify-center">
           <span className=" text-muted-foreground text-lg">

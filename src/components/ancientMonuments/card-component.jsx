@@ -34,7 +34,7 @@ export default function AMCardComponent({ object }) {
         <div className="flex justify-end gap-2 mt-auto py-2">
           <Button
             size="sm"
-            variant="secondary"
+            variant="ghost"
             onClick={() => navigate(`${object.id}`)}
           >
             Show

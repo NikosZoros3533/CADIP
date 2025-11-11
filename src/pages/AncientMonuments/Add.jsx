@@ -24,6 +24,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { entities } from "@/lib/constants";
 import { postEntity } from "@/services/api";
+
 const formSchema = z.object({
   name: z.string().nonempty(),
   description: z.string(),

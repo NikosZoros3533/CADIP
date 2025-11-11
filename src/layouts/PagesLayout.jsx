@@ -43,7 +43,7 @@ export default function PagesLayout() {
       <div className="flex flex-wrap justify-between gap-2 p-6 mx-auto max-w-7xl">
         <AppBreadcrumb/>
         {!childRoute && (
-          <div>
+          <div className="flex gap-0.5">
             <Button
               size="icon"
               variant={isGrid ? "" : "ghost"}
