@@ -16,17 +16,9 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
-export const title = "Accessibility";
-// const interests = [
-//   { value: "technology", label: "Technology" },
-//   { value: "science", label: "Science" },
-//   { value: "art", label: "Art" },
-//   { value: "music", label: "Music" },
-//   { value: "sports", label: "Sports" },
-//   { value: "travel", label: "Travel" },
-// ];
 
-export default function MultiCheckbox({ vocab }) {
+
+export default function MultiCheckbox({title, vocab }) {
   const [open, setOpen] = useState(false);
   const [selectedValues, setSelectedValues] = useState([]);
 
@@ -47,14 +39,14 @@ export default function MultiCheckbox({ vocab }) {
               {selectedValues.length}/{MAX_SELECTIONS} selected
             </span>
           ) : (
-            "Select interests..."
+            `Select ${title}`
           )}
           <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[250px] p-0">
         <Command>
-          <CommandInput placeholder="Search interests..." />
+          <CommandInput placeholder={`Select ${title}`} />
           <CommandList>
             <CommandEmpty>No interest found.</CommandEmpty>
             {isMaxReached && (

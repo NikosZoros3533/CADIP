@@ -23,14 +23,28 @@ import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import MultiCheckbox from "../MultiCheckbox";
+import MultiCheckbox from "../vocabs/MultiCheckbox";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "../ui/table";
+import { SingleCheckbox } from "../vocabs/SingleCheckbox";
 
-const vocExample = [
+const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
   { id: "2", labelEn: "Partially accessible with assistance" },
   { id: "3", labelEn: "Not accessible to visitors" },
 ];
 
+const vocDistr = [
+  { id: "1", value: "lemessos", label: "Lemessos" },
+  { id: "2", value: "larnaka", label: "Larnaka" },
+  { id: "3", value: "pafos", label: "Pafos" },
+];
 export default function AMForm({ object }) {
   return (
     <Card className="w-full max-w-7xl place-self-center p-4 md:p-6 lg:p-10 my-6 md:my-15">
@@ -69,7 +83,7 @@ export default function AMForm({ object }) {
                       <Checkbox id="toggle" />
                       <Label htmlFor="toggle">Record Complete</Label>
                     </div>
-                    <Button>View Map</Button>
+                    <Button type="button">View Map</Button>
                   </div>
                 </FieldGroup>
                 <div className="bg-muted border aspect-square w-50 h-50 rounded-xl"></div>
@@ -77,8 +91,8 @@ export default function AMForm({ object }) {
             </FieldSet>
           </FieldGroup>
         </form>
-        <Tabs defaultValue="location" className="py-6 w-2xl">
-          <TabsList>
+        <Tabs defaultValue="location" className="py-6 w-full">
+          <TabsList className="flex flex-wrap lg:flex-row gap-2 h-auto">
             <TabsTrigger value="location">Location</TabsTrigger>
             <TabsTrigger value="function">Use/Function</TabsTrigger>
             <TabsTrigger value="manufacturing">Manufacturing</TabsTrigger>
@@ -94,13 +108,61 @@ export default function AMForm({ object }) {
               Recording Details
             </TabsTrigger>
           </TabsList>
-          <TabsContent value="location" className="w-full">
-            <Card >
+          <TabsContent value="location" className="w-full lg:min-w-4xl">
+            <Card className="drop-shadow-xl">
               <CardContent className="grid gap-6">
-                <div className="flex flex-row items-center gap-6">
+                <div className="flex flex-col sm:flex-row items-start justify-center sm:items-center gap-6">
                   <FieldLabel>Accessibility</FieldLabel>
-                  <MultiCheckbox vocab={vocExample}/>
+                  <MultiCheckbox title="accessibility" vocab={vocAcc} />
                 </div>
+                <div className="flex flex-col justify-between md:flex-row gap-4 p-3">
+                  <Table className="border">
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>District</TableHead>
+                        <TableHead>Town/Village</TableHead>
+                        <TableHead>Quarter</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell className="font-medium">
+                          <SingleCheckbox title="District" vocab={vocDistr} />
+                        </TableCell>
+                        <TableCell>
+                          <SingleCheckbox
+                            title="Town/Village"
+                            vocab={vocDistr}
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <SingleCheckbox title="Quarter" vocab={vocDistr} />
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                  <Table className="border">
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Toponym</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow>
+                        <TableCell className="font-medium">
+                          <SingleCheckbox title="Toponym" vocab={vocDistr} />
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
+                </div>
+                <Field orientation="horizontal">
+                  <FieldLabel>Analytical Description</FieldLabel>
+                  <Textarea
+                    placeholder="Describe the monument"
+                    className="w-full "
+                  />
+                </Field>
               </CardContent>
               <CardFooter className="flex gap-1">
                 <Button>Save changes</Button>
