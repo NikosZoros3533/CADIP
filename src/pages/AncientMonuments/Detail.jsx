@@ -1,20 +1,16 @@
-import { entities } from "@/lib/constants";
-import { getEntity } from "@/services/api";
+import { getMonument } from "@/services/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Detail() {
   const [data, setData] = useState({});
   const params = useParams();
-  const entity = entities[0];
+  const id = parseInt(params.id);
 
   useEffect(() => {
     const fetchEntity = async () => {
       try {
-        const url = `${entity.fetchUrl}/${params.id}`
-        console.log(url);
-        
-        const response = await getEntity(url);
+        const response = await getMonument(id);
         setData(response);
       } catch (error) {
         console.log("Failed to fetch");
@@ -22,7 +18,6 @@ export default function Detail() {
     };
     fetchEntity();
   }, []);
-
 
   return (
     <div>
@@ -33,7 +28,7 @@ export default function Detail() {
         <li>{data?.monumentsInCloseProximity}</li>
         <li>{data?.associatedHistoricalFiguresEvents}</li>
         <li>{data?.gazetteNumber}</li>
-      </ul> 
+      </ul>
     </div>
   );
 }

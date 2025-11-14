@@ -1,8 +1,7 @@
 import GridLayout from "../../components/grid-layout";
 import { useOutletContext } from "react-router-dom";
 import TableComponent from "@/components/table-component";
-import { getEntities } from "@/services/api";
-import { entities } from "@/lib/constants";
+import { getMonuments } from "@/services/api";
 import { useEffect, useState } from "react";
 import AMCardComponent from "@/components/ancientMonuments/card-component";
 import { Spinner } from "@/components/ui/spinner";
@@ -12,14 +11,12 @@ export default function AncientMonuments() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const entity = entities[0];
-  // const ancientMonuments = getEntities(entity.fetchUrl);
   useEffect(() => {
     const fetchEntities = async () => {
       setLoading(true);
       setError(false);
       try {
-        const response = await getEntities(entity.fetchUrl);
+        const response = await getMonuments();
         setData(response);
       } catch (error) {
         setError("Failed to fetch data");

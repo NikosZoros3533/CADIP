@@ -9,21 +9,13 @@ import {
   FieldSet,
   FieldError,
 } from "@/components/ui/field";
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useForm } from "@tanstack/react-form";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { entities } from "@/lib/constants";
-import { postEntity } from "@/services/api";
+import { postMonument } from "@/services/api";
 
 const formSchema = z.object({
   name: z.string().nonempty(),
@@ -31,7 +23,6 @@ const formSchema = z.object({
   isRecordCompleted: z.boolean(),
 });
 
-const entity = entities[0];
 
 export default function AncientMonumentsAdd() {
   const form = useForm({
@@ -59,7 +50,7 @@ export default function AncientMonumentsAdd() {
           "--border-radius": "calc(var(--radius)  + 4px)",
         },
       });
-      postEntity(entity.fetchUrl, value);
+      postMonument(value);
     },
   });
 
@@ -76,9 +67,7 @@ export default function AncientMonumentsAdd() {
           <FieldGroup>
             <FieldSet>
               <div className="flex flex-col items-center">
-                <FieldLegend>
-                  Add a new Ancient Monument
-                </FieldLegend>
+                <FieldLegend>Add a new Ancient Monument</FieldLegend>
                 <FieldDescription>
                   All transactions are secure and encrypted
                 </FieldDescription>

@@ -9,7 +9,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import { useNavigate } from "react-router-dom";
 import TableComponent from "./table-component";
 import { useEffect, useState } from "react";
-import { getEntities } from "@/services/api";
+import { getMonuments } from "@/services/api";
 
 export default function CollapsibleComponent({ entity }) {
   const [objects, setObjects] = useState({});
@@ -19,7 +19,7 @@ export default function CollapsibleComponent({ entity }) {
       return;
     }
     const fetchEntities = async () => {
-      const data = await getEntities(entity.fetchUrl);
+      const data = await getMonuments();
       setObjects(data);
     };
 
