@@ -24,15 +24,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import MultiCheckbox from "../vocabs/MultiCheckbox";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../ui/table";
-import { SingleCheckbox } from "../vocabs/SingleCheckbox";
+
+import LocationTable from "../form-components/location-table";
+import ToponymTable from "../form-components/toponym-table";
 
 const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
@@ -40,17 +34,24 @@ const vocAcc = [
   { id: "3", labelEn: "Not accessible to visitors" },
 ];
 
-const vocDistr = [
-  { id: "1", value: "lemessos", label: "Lemessos" },
-  { id: "2", value: "larnaka", label: "Larnaka" },
-  { id: "3", value: "pafos", label: "Pafos" },
+const locationData = [
+  { district: "1", town: "2", quarter: "3" },
+  { district: "2", town: "3", quarter: "1" },
+  { district: "3", town: "1", quarter: "2" },
 ];
-export default function AMForm({ object }) {
+
+export default function AMForm({ monument = null }) {
   return (
     <Card className="w-full max-w-7xl place-self-center p-4 md:p-6 lg:p-10 my-6 md:my-15">
       <CardHeader className="flex flex-col w-full justify-center items-center">
-        <CardTitle>Edit Monument : {object.id}</CardTitle>
-        <CardDescription>Edit and Save this Monument info</CardDescription>
+        {monument ? (
+          <>
+            <CardTitle>Edit Monument : {monument.id}</CardTitle>
+            <CardDescription>Edit and Save this Monument info</CardDescription>
+          </>
+        ) : (
+          <CardTitle>New Monument</CardTitle>
+        )}
       </CardHeader>
       <CardContent className="place-self-start w-full max-w-full">
         <form>
@@ -109,52 +110,15 @@ export default function AMForm({ object }) {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="location" className="w-full lg:min-w-4xl">
-            <Card className="drop-shadow-xl">
-              <CardContent className="grid gap-6">
+            <Card className="dark:drop-shadow-xl border-2">
+              <CardContent className="flex flex-col gap-8">
                 <div className="flex flex-col sm:flex-row items-start justify-center sm:items-center gap-6">
                   <FieldLabel>Accessibility</FieldLabel>
                   <MultiCheckbox title="accessibility" vocab={vocAcc} />
                 </div>
-                <div className="flex flex-col justify-between md:flex-row gap-4 p-3">
-                  <Table className="border">
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>District</TableHead>
-                        <TableHead>Town/Village</TableHead>
-                        <TableHead>Quarter</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-medium">
-                          <SingleCheckbox title="District" vocab={vocDistr} />
-                        </TableCell>
-                        <TableCell>
-                          <SingleCheckbox
-                            title="Town/Village"
-                            vocab={vocDistr}
-                          />
-                        </TableCell>
-                        <TableCell>
-                          <SingleCheckbox title="Quarter" vocab={vocDistr} />
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                  <Table className="border">
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Toponym</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell className="font-medium">
-                          <SingleCheckbox title="Toponym" vocab={vocDistr} />
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
+                <div className="flex flex-wrap flex-col md:flex-row md:justify-evenly gap-4 p-3">
+                  <LocationTable />
+                  <ToponymTable />
                 </div>
                 <Field orientation="horizontal">
                   <FieldLabel>Analytical Description</FieldLabel>

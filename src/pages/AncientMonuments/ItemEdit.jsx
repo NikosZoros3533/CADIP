@@ -4,5 +4,5 @@ import AMForm from "@/components/ancientMonuments/form-component";
 export default function () {
   const params = useParams();
   const object = {id:params.id}
-  return <AMForm object={object} />
+  return <AMForm monument={object} />
 }
