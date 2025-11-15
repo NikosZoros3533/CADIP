@@ -1,15 +1,9 @@
 import { entities, vocabs } from "@/lib/constants";
 
-/* 
-getEntities(fetchUrl:string entity.fetchUrl)
-getEntity(fetchUrl/{id})
-getVocab(fetchUrl:vocabs.vocab.fetchurl)
-*/
+
 const BASE_URL = "http://localhost:8000/api";
 
 const ancientMonumentUrl = entities[0].fetchUrl;
-
-//Vocabs
 const accessibilityVocabUrl = vocabs[0].fetchUrl;
 
 export async function getMonuments() {

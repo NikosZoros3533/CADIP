@@ -16,7 +16,6 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/components/ui/field";
-
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useParams } from "react-router-dom";
@@ -24,7 +23,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import MultiCheckbox from "../vocabs/MultiCheckbox";
-
+import { MapPin } from "lucide-react";
 import LocationTable from "../form-components/location-table";
 import ToponymTable from "../form-components/toponym-table";
 
@@ -84,7 +83,10 @@ export default function AMForm({ monument = null }) {
                       <Checkbox id="toggle" />
                       <Label htmlFor="toggle">Record Complete</Label>
                     </div>
-                    <Button type="button">View Map</Button>
+                    <Button type="button">
+                      View Map
+                      <MapPin />
+                    </Button>
                   </div>
                 </FieldGroup>
                 <div className="bg-muted border aspect-square w-50 h-50 rounded-xl"></div>
@@ -104,8 +106,8 @@ export default function AMForm({ monument = null }) {
             <TabsTrigger value="protection">
               Protection/Legal Status
             </TabsTrigger>
-            <TabsTrigger value="Documentation">Documentation</TabsTrigger>
-            <TabsTrigger value="Recording Details">
+            <TabsTrigger value="documentation">Documentation</TabsTrigger>
+            <TabsTrigger value="recordingDetails">
               Recording Details
             </TabsTrigger>
           </TabsList>
@@ -128,8 +130,9 @@ export default function AMForm({ monument = null }) {
                   />
                 </Field>
               </CardContent>
-              <CardFooter className="flex gap-1">
-                <Button>Save changes</Button>
+              <CardFooter className="flex gap-2">
+                <Button variant="secondary">Save changes</Button>
+                <Button variant="outline">Reset</Button>
               </CardFooter>
             </Card>
           </TabsContent>

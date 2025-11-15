@@ -14,3 +14,4 @@ export function getChildRoute(location) {
   const segments = location.pathname.replace(/^\/+/, "").split("/");
   return segments.length > 1 ? segments[1] : null;
 }
+

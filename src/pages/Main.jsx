@@ -53,13 +53,13 @@ export default function Main() {
           </Popover>
         ))}
       </GridLayout>
-      <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-[repeat(5,1fr)] gap-2 min-h-full p-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-[repeat(5,1fr)] gap-2 min-h-full p-6 ">
         <div className="md:col-span-3 md:row-span-5 flex flex-col gap-4">
           {entities.map((entity) => (
             <CollapsibleComponent key={entity.title} entity={entity} />
           ))}
 
-          <GridLayout columns={2}>
+          <GridLayout columns={2} >
             <Card className="w-full min-w-sm max-w-sm">
               <CardHeader>
                 <div className="flex flex-row justify-between py-2 items-center">
