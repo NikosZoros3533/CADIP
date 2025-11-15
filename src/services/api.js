@@ -7,16 +7,10 @@ getVocab(fetchUrl:vocabs.vocab.fetchurl)
 */
 const BASE_URL = "http://localhost:8000/api";
 
-
-
-/**
- * Mapping Urls
- * 
- */
 const ancientMonumentUrl = entities[0].fetchUrl;
 
 //Vocabs
-const accessibilityVocabUrl =vocabs[0].fetchUrl;
+const accessibilityVocabUrl = vocabs[0].fetchUrl;
 
 export async function getMonuments() {
   try {
@@ -73,7 +67,6 @@ export async function patchMonument(id, body) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/ld+json",
-
       },
       body: JSON.stringify(body),
     });
