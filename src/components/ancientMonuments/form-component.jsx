@@ -23,12 +23,9 @@ import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import MultiCheckbox from "../vocabs/MultiCheckbox";
 import { MapPin } from "lucide-react";
 import LocationTable from "../form-components/location-table";
 import ToponymTable from "../form-components/toponym-table";
-import * as z from "zod";
-import { formOptions, useForm } from "@tanstack/react-form";
 import {
   monumentFormOpts,
   monumentSchema,
