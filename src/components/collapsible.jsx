@@ -27,7 +27,7 @@ export default function CollapsibleComponent({ entity }) {
   }, []);
 
   return (
-    <Collapsible className="bg-card flex flex-col gap-2 border p-1 rounded-lg">
+    <Collapsible className="bg-card flex flex-col gap-2 border p-1 rounded-lg w-full">
       <div className="flex items-center justify-between gap-4 px-4">
         <h4 className="text-sm font-semibold">{entity.title}</h4>
         <CollapsibleTrigger asChild>

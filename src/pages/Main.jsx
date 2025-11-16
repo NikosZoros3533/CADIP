@@ -53,14 +53,15 @@ export default function Main() {
           </Popover>
         ))}
       </GridLayout>
-      <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-[repeat(5,1fr)] gap-2 min-h-full p-6 ">
-        <div className="md:col-span-3 md:row-span-5 flex flex-col gap-4">
-          {entities.map((entity) => (
-            <CollapsibleComponent key={entity.title} entity={entity} />
-          ))}
-
-          <GridLayout columns={2} >
-            <Card className="w-full min-w-sm max-w-sm">
+      <div className="flex flex-col md:flex-row gap-4 p-4 md:p-6 min-h-screen">
+        <div className="flex flex-col gap-4 w-full md:w-2/3">
+          <div className="space-y-4">
+            {entities.map((entity) => (
+              <CollapsibleComponent key={entity.title} entity={entity} />
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <Card className="w-full ">
               <CardHeader>
                 <div className="flex flex-row justify-between py-2 items-center">
                   <CardTitle>Profile</CardTitle>
@@ -72,7 +73,7 @@ export default function Main() {
                 <Button variant="link">Go to Settings</Button>
               </CardAction>
             </Card>
-            <Card className="w-full min-w-sm max-w-sm">
+            <Card className="w-full ">
               <CardHeader>
                 <div className="flex flex-row justify-between py-2 items-center">
                   <CardTitle>Thesaurus of Terms</CardTitle>
@@ -84,12 +85,14 @@ export default function Main() {
                 <Button variant="link">Go to Terms</Button>
               </CardAction>
             </Card>
-          </GridLayout>
+          </div>
         </div>
-        <div className="md:col-span-2 md:col-start-4 md:row-span-3 bg-muted rounded-lg flex items-center justify-center">
-          <span className=" text-muted-foreground text-lg">
-            [Map Placeholder]
-          </span>
+        <div className="w-full  md:w-1/3 ">
+          <div className="bg-muted rounded-lg flex items-center justify-center h-96 md:h-[55vh] w-full overflow-hidden">
+            <span className=" text-muted-foreground text-lg">
+              [Map Placeholder]
+            </span>
+          </div>
         </div>
       </div>
     </>

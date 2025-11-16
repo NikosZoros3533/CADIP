@@ -21,7 +21,6 @@ export default function MultiCheckbox({ title, vocab }) {
   const [open, setOpen] = useState(false);
   // const [selectedValues, setSelectedValues] = useState([]);
   const field = useFieldContext();
-  console.log(field.state.value);
 
   const MAX_SELECTIONS = vocab.length;
   const isMaxReached = field.state.value.length >= MAX_SELECTIONS;
