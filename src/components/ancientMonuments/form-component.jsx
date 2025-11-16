@@ -29,6 +29,11 @@ import LocationTable from "../form-components/location-table";
 import ToponymTable from "../form-components/toponym-table";
 import * as z from "zod";
 import { formOptions, useForm } from "@tanstack/react-form";
+import {
+  monumentFormOpts,
+  monumentSchema,
+} from "@/lib/register-form/formUtils";
+import { useAppForm } from "@/hooks/forms/form";
 
 const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
@@ -42,35 +47,13 @@ const locationData = [
   { district: "3", town: "1", quarter: "2" },
 ];
 
-const monumentSchema = z.object({
-  name: z.string().nonempty("Name is required"),
-  alternativeName: z.string().optional(),
-  analyticalDescription: z.string().optional(),
-  description: z.string().nonempty("Description is required"),
-  monumentNumber: z.string().optional(),
-  isRecordComplete: z.boolean(),
-});
-
-const defaultMonumentValues = {
-  name: "",
-  alternativeName: "",
-  analyticalDescription: "",
-  description: "",
-  monumentNumber: "",
-  isRecordComplete: false,
-};
-
-const formOpts = formOptions({
-  defaultValues: defaultMonumentValues,
-});
-
 export default function AMForm({ monument = null }) {
-  const form = useForm({
-    ...formOpts,
+  const form = useAppForm({
+    ...monumentFormOpts,
     validators: {
       onSubmit: monumentSchema,
-      onBlur: monumentSchema,
       onChange: monumentSchema,
+      onBlur: monumentSchema,
     },
     onSubmit: ({ value }) => {
       console.log(value);
@@ -255,7 +238,7 @@ export default function AMForm({ monument = null }) {
               </div>
             </FieldSet>
           </FieldGroup>
-          {/* <Tabs defaultValue="location" className="py-6 w-full">
+          <Tabs defaultValue="location" className="py-6 w-full">
             <TabsList className="flex flex-wrap lg:flex-row gap-2 h-auto">
               <TabsTrigger value="location">Location</TabsTrigger>
               <TabsTrigger value="function">Use/Function</TabsTrigger>
@@ -276,8 +259,19 @@ export default function AMForm({ monument = null }) {
               <Card className="dark:drop-shadow-xl border-2">
                 <CardContent className="flex flex-col gap-8">
                   <div className="flex flex-col sm:flex-row items-start justify-center sm:items-center gap-6">
-                    <FieldLabel>Accessibility</FieldLabel>
-                    <MultiCheckbox title="accessibility" vocab={vocAcc} />
+                    <form.AppField name="accessibilities" mode="array">
+                      {(field) => {
+                        return (
+                          <>
+                            <FieldLabel>Accessibility</FieldLabel>
+                            <field.MultiCheckbox
+                              title="accessibility"
+                              vocab={vocAcc}
+                            />
+                          </>
+                        );
+                      }}
+                    </form.AppField>
                   </div>
                   <div className="flex flex-wrap flex-col md:flex-row md:justify-evenly gap-4 p-3">
                     <LocationTable />
@@ -291,13 +285,17 @@ export default function AMForm({ monument = null }) {
                     />
                   </Field>
                 </CardContent>
-                <CardFooter className="flex gap-2">
-                  <Button variant="secondary">Save changes</Button>
-                  <Button variant="outline">Reset</Button>
+                <CardFooter className="flex justify-end gap-2">
+                  <Button variant="secondary" type="button">
+                    Save changes
+                  </Button>
+                  <Button variant="outline" type="button">
+                    Reset
+                  </Button>
                 </CardFooter>
               </Card>
             </TabsContent>
-          </Tabs> */}
+          </Tabs>
           <Button type="submit" className="mt-6">
             Submit
           </Button>

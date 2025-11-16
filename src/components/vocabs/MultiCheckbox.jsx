@@ -15,15 +15,16 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
+import { useFieldContext } from "@/hooks/forms/form-context";
 
-
-
-export default function MultiCheckbox({title, vocab }) {
+export default function MultiCheckbox({ title, vocab }) {
   const [open, setOpen] = useState(false);
-  const [selectedValues, setSelectedValues] = useState([]);
+  // const [selectedValues, setSelectedValues] = useState([]);
+  const field = useFieldContext();
+  console.log(field.state.value);
 
   const MAX_SELECTIONS = vocab.length;
-  const isMaxReached = selectedValues.length >= MAX_SELECTIONS;
+  const isMaxReached = field.state.value.length >= MAX_SELECTIONS;
 
   return (
     <Popover onOpenChange={setOpen} open={open}>
@@ -34,9 +35,9 @@ export default function MultiCheckbox({title, vocab }) {
           role="combobox"
           variant="outline"
         >
-          {selectedValues.length > 0 ? (
+          {field.state.value.length > 0 ? (
             <span>
-              {selectedValues.length}/{MAX_SELECTIONS} selected
+              {field.state.value.length}/{MAX_SELECTIONS} selected
             </span>
           ) : (
             `Select ${title}`
@@ -49,14 +50,10 @@ export default function MultiCheckbox({title, vocab }) {
           <CommandInput placeholder={`Select ${title}`} />
           <CommandList>
             <CommandEmpty>No interest found.</CommandEmpty>
-            {isMaxReached && (
-              <div className="p-2 text-center text-muted-foreground text-xs">
-                Maximum {MAX_SELECTIONS} selections reached
-              </div>
-            )}
+           
             <CommandGroup>
               {vocab.map((item) => {
-                const isSelected = selectedValues.includes(item.id);
+                const isSelected = field.state.value.includes(item.id);
                 const isDisabled = !isSelected && isMaxReached;
 
                 return (
@@ -68,11 +65,14 @@ export default function MultiCheckbox({title, vocab }) {
                       if (isDisabled) {
                         return;
                       }
-                      setSelectedValues(
-                        selectedValues.includes(currentValue)
-                          ? selectedValues.filter((v) => v !== currentValue)
-                          : [...selectedValues, currentValue]
+                      console.log(currentValue);
+                      
+                      field.setValue(
+                        field.state.value.includes(currentValue)
+                          ? field.state.value.filter((v) => v !== currentValue) 
+                          : [...field.state.value, currentValue]
                       );
+                      
                     }}
                     value={item.id}
                   >

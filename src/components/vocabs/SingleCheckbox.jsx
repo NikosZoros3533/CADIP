@@ -22,7 +22,6 @@ import {
 export function SingleCheckbox({ title, vocab }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-  console.log(vocab);
   
   return (
     <Popover open={open} onOpenChange={setOpen}>
