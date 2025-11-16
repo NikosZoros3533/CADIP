@@ -24,8 +24,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { MapPin } from "lucide-react";
-import LocationTable from "../form-components/location-table";
-import ToponymTable from "../form-components/toponym-table";
 import {
   monumentFormOpts,
   monumentSchema,
@@ -58,7 +56,7 @@ export default function AMForm({ monument = null }) {
   });
 
   return (
-    <Card className="w-full max-w-7xl place-self-center p-4 md:p-6 lg:p-10 my-6 md:my-15">
+    <Card className="w-full max-w-7xl place-self-center p-3 md:p-4 lg:p-6 my-4 md:my-8 text-sm">
       <CardHeader className="flex flex-col w-full justify-center items-center">
         {monument ? (
           <>
@@ -74,7 +72,7 @@ export default function AMForm({ monument = null }) {
           </>
         )}
       </CardHeader>
-      <CardContent className="place-self-start w-full max-w-full">
+      <CardContent className="place-self-start w-full max-w-full pt-3 pb-4">
         <form
           onSubmit={(e) => {
             e.preventDefault();
