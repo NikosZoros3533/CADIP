@@ -1,3 +1,4 @@
+import { useFieldContext } from "@/hooks/forms/form-context";
 import {
   Table,
   TableBody,
@@ -14,6 +15,10 @@ const toponyms = [
   { id: "3", value: "sacred_site", label: "Sacred Site" },
 ];
 export default function ToponymTable() {
+  const field = useFieldContext();
+  function handleChange(value) {
+    field.setValue(value);
+  }
   return (
     <div className="rounded-xl border-2 shadow-2xl p-4 overflow-auto max-w-full">
       <Table>
@@ -25,7 +30,12 @@ export default function ToponymTable() {
         <TableBody>
           <TableRow>
             <TableCell className="font-medium">
-              <SingleCheckbox title="Toponym" vocab={toponyms} />
+              <SingleCheckbox
+                title="Toponym"
+                vocab={toponyms}
+                value={field.state.value}
+                onChange={handleChange}
+              />
             </TableCell>
           </TableRow>
         </TableBody>

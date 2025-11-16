@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -7,6 +8,7 @@ import {
   TableRow,
 } from "../ui/table";
 import { SingleCheckbox } from "../vocabs/SingleCheckbox";
+import { useFieldContext } from "@/hooks/forms/form-context";
 
 const districts = [
   { id: "1", value: "nicosia", label: "Nicosia" },
@@ -32,6 +34,11 @@ const quarters = [
 ];
 
 export default function LocationTable() {
+  const field = useFieldContext();
+
+  const handleChange = (name, value) => {
+    field.setValue((prev) => ({ ...prev, [name]: value }));
+  };
   return (
     <div className="rounded-xl border-2 shadow-2xl p-4 overflow-auto max-w-full md:min-w-[700px]">
       <Table>
@@ -45,13 +52,28 @@ export default function LocationTable() {
         <TableBody>
           <TableRow className="min-w-[500px]">
             <TableCell className="font-medium">
-              <SingleCheckbox title="District" vocab={districts} />
+              <SingleCheckbox
+                title="District"
+                vocab={districts}
+                value={location.district}
+                onChange={(value) => handleChange("district", value)}
+              />
             </TableCell>
             <TableCell>
-              <SingleCheckbox title="Town/Village" vocab={towns} />
+              <SingleCheckbox
+                title="Town/Village"
+                vocab={towns}
+                value={location.town}
+                onChange={(value) => handleChange("town", value)}
+              />
             </TableCell>
             <TableCell>
-              <SingleCheckbox title="Quarter" vocab={quarters} />
+              <SingleCheckbox
+                title="Quarter"
+                vocab={quarters}
+                value={location.quarter}
+                onChange={(value) => handleChange("quarter", value)}
+              />
             </TableCell>
           </TableRow>
         </TableBody>

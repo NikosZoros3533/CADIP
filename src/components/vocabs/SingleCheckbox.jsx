@@ -19,10 +19,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function SingleCheckbox({ title, vocab }) {
+export function SingleCheckbox({ title, vocab, value, onChange }) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
-  
+
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -49,7 +48,8 @@ export function SingleCheckbox({ title, vocab }) {
                   key={item.value}
                   value={item.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                    const newValue = currentValue === value ? "" : currentValue;
+                    onChange(newValue);
                     setOpen(false);
                   }}
                 >

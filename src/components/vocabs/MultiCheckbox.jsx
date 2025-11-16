@@ -19,7 +19,6 @@ import { useFieldContext } from "@/hooks/forms/form-context";
 
 export default function MultiCheckbox({ title, vocab }) {
   const [open, setOpen] = useState(false);
-  // const [selectedValues, setSelectedValues] = useState([]);
   const field = useFieldContext();
 
   const MAX_SELECTIONS = vocab.length;
@@ -49,7 +48,7 @@ export default function MultiCheckbox({ title, vocab }) {
           <CommandInput placeholder={`Select ${title}`} />
           <CommandList>
             <CommandEmpty>No interest found.</CommandEmpty>
-           
+
             <CommandGroup>
               {vocab.map((item) => {
                 const isSelected = field.state.value.includes(item.id);
@@ -64,14 +63,11 @@ export default function MultiCheckbox({ title, vocab }) {
                       if (isDisabled) {
                         return;
                       }
-                      console.log(currentValue);
-                      
                       field.setValue(
                         field.state.value.includes(currentValue)
-                          ? field.state.value.filter((v) => v !== currentValue) 
+                          ? field.state.value.filter((v) => v !== currentValue)
                           : [...field.state.value, currentValue]
                       );
-                      
                     }}
                     value={item.id}
                   >

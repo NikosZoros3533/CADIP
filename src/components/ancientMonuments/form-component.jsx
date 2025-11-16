@@ -271,16 +271,43 @@ export default function AMForm({ monument = null }) {
                     </form.AppField>
                   </div>
                   <div className="flex flex-wrap flex-col md:flex-row md:justify-evenly gap-4 p-3">
-                    <LocationTable />
-                    <ToponymTable />
+                    <form.AppField name="location">
+                      {(field) => (
+                        <>
+                          <field.LocationTable />
+                        </>
+                      )}
+                    </form.AppField>
+                    <form.AppField name="toponym">
+                      {(field) => (
+                        <>
+                          <field.ToponymTable />
+                        </>
+                      )}
+                    </form.AppField>
                   </div>
-                  <Field orientation="horizontal">
-                    <FieldLabel>Analytical Description</FieldLabel>
-                    <Textarea
-                      placeholder="Describe the monument"
-                      className="w-full "
-                    />
-                  </Field>
+                  <form.Field orientation="horizontal" name="plotsDeclExpro">
+                    {(field) => {
+                      const isInvalid =
+                        field.state.meta.isTouched && !field.state.meta.isValid;
+                      return (
+                        <>
+                          <FieldLabel htmlFor={field.name} >
+                            Plots as Described on Declaration/Expropriation
+                          </FieldLabel>
+                          <Textarea
+                            placeholder="Describe the monument"
+                            className="w-full "
+                            id={field.name}
+                            value={field.state.value}
+                            onBlur={field.handleBlur}
+                            onChange={(e) => field.handleChange(e.target.value)}
+                            aria-invalid={isInvalid}
+                          />
+                        </>
+                      );
+                    }}
+                  </form.Field>
                 </CardContent>
                 <CardFooter className="flex justify-end gap-2">
                   <Button variant="secondary" type="button">
