@@ -3,23 +3,18 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import {
-  Field,
-  FieldContent,
-  FieldDescription,
-  FieldError,
   FieldGroup,
-  FieldLabel,
-  FieldLegend,
   FieldSet,
+  FieldLabel,
+  FieldError,
+  Field,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useParams } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -29,33 +24,14 @@ import {
   monumentSchema,
 } from "@/lib/register-form/formUtils";
 import { useAppForm } from "@/hooks/forms/form";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../ui/table";
-import { SingleCheckbox } from "../vocabs/SingleCheckbox";
 
 const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
   { id: "2", labelEn: "Partially accessible with assistance" },
   { id: "3", labelEn: "Not accessible to visitors" },
 ];
-const testVoc = [
-  { id: "1", value: "nicosia", label: "Nicosia" },
-  { id: "2", value: "larnaca", label: "Larnaca" },
-  { id: "3", value: "limassol", label: "Limassol" },
-];
-const locationData = [
-  { district: "1", town: "2", quarter: "3" },
-  { district: "2", town: "3", quarter: "1" },
-  { district: "3", town: "1", quarter: "2" },
-];
 
-export default function AMForm({ monument = null }) {
+export function AMFormCompact({ monument = null }) {
   const form = useAppForm({
     ...monumentFormOpts,
     validators: {
@@ -69,8 +45,8 @@ export default function AMForm({ monument = null }) {
   });
 
   return (
-    <Card className="w-full max-w-7xl place-self-center p-3 md:p-4 lg:p-6 my-4 md:my-8 text-sm">
-      <CardHeader className="flex flex-col w-full justify-center items-center">
+    <Card className="w-full max-w-7xl place-self-center p-3 md:p-4 lg:p-6 my-4 md:my-8 text-base ">
+      <CardHeader className="flex flex-col w-full justify-center items-center pb-2">
         {monument ? (
           <>
             <CardTitle>Edit Monument : {monument.id}</CardTitle>
@@ -85,7 +61,8 @@ export default function AMForm({ monument = null }) {
           </>
         )}
       </CardHeader>
-      <CardContent className="place-self-start w-full max-w-full pt-3 pb-4">
+
+      <CardContent className="place-self-start w-full max-w-full pt-2 pb-4">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -94,14 +71,16 @@ export default function AMForm({ monument = null }) {
         >
           <FieldGroup>
             <FieldSet>
-              <div className="flex flex-col md:flex-row w-full justify-between gap-4">
-                <FieldGroup className="w-full">
+              <div className="flex flex-col md:flex-row w-full justify-between gap-6">
+                {/* LEFT COLUMN – more compact vertical spacing */}
+                <FieldGroup className="w-full md:max-w-3xl space-y-1">
+                  {/* Name */}
                   <form.Field name="name">
                     {(field) => {
                       const isInvalid =
                         field.state.meta.isTouched && !field.state.meta.isValid;
                       return (
-                        <>
+                        <div className="space-y-1.5">
                           <FieldLabel htmlFor={field.name}>Name</FieldLabel>
                           <Input
                             id={field.name}
@@ -115,16 +94,18 @@ export default function AMForm({ monument = null }) {
                           {isInvalid && (
                             <FieldError errors={field.state.meta.errors} />
                           )}
-                        </>
+                        </div>
                       );
                     }}
                   </form.Field>
+
+                  {/* Alternative Name */}
                   <form.Field name="alternativeName">
                     {(field) => {
                       const isInvalid =
                         field.state.meta.isTouched && !field.state.meta.isValid;
                       return (
-                        <>
+                        <div className="space-y-1.5">
                           <FieldLabel htmlFor={field.name}>
                             Alternative Name
                           </FieldLabel>
@@ -135,88 +116,113 @@ export default function AMForm({ monument = null }) {
                             onChange={(e) => field.handleChange(e.target.value)}
                             placeholder="Castle of Limassol"
                             aria-invalid={isInvalid}
+                            className="min-h-[70px]"
                           />
                           {isInvalid && (
                             <FieldError errors={field.state.meta.errors} />
                           )}
-                        </>
+                        </div>
                       );
                     }}
                   </form.Field>
-                  <form.Field name="analyticalDescription">
-                    {(field) => {
-                      const isInvalid =
-                        field.state.meta.isTouched && !field.state.meta.isValid;
-                      return (
-                        <>
-                          <FieldLabel htmlFor={field.name}>
-                            Analytical Description
-                          </FieldLabel>
-                          <Textarea
-                            id={field.name}
-                            value={field.state.value}
-                            onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                            aria-invalid={isInvalid}
-                            placeholder="Describe the monument"
-                          />
-                          {isInvalid && (
-                            <FieldError errors={field.state.meta.errors} />
-                          )}
-                        </>
-                      );
-                    }}
-                  </form.Field>
-                  <form.Field name="description">
-                    {(field) => {
-                      const isInvalid =
-                        field.state.meta.isTouched && !field.state.meta.isValid;
-                      return (
-                        <>
-                          <FieldLabel htmlFor={field.name}>
-                            Description
-                          </FieldLabel>
-                          <Textarea
-                            id={field.name}
-                            value={field.state.value}
-                            onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                            aria-invalid={isInvalid}
-                            placeholder="Describe the monument"
-                          />
-                          {isInvalid && (
-                            <FieldError errors={field.state.meta.errors} />
-                          )}
-                        </>
-                      );
-                    }}
-                  </form.Field>
-                  <form.Field name="monumentNumber">
-                    {(field) => {
-                      const isInvalid =
-                        field.state.meta.isTouched && !field.state.meta.isValid;
-                      return (
-                        <>
-                          <FieldLabel htmlFor={field.name}>
-                            Monument Number
-                          </FieldLabel>
-                          <Input
-                            id={field.name}
-                            value={field.state.value}
-                            onBlur={field.handleBlur}
-                            onChange={(e) => field.handleChange(e.target.value)}
-                            aria-invalid={isInvalid}
-                            placeholder="monument num"
-                          />
-                          {isInvalid && (
-                            <FieldError errors={field.state.meta.errors} />
-                          )}
-                        </>
-                      );
-                    }}
-                  </form.Field>
-                  <div className="flex justify-between w-full">
-                    <div className="flex items-center gap-3">
+
+                  {/* DESCRIPTION + ANALYTICAL DESCRIPTION in a row on lg */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <form.Field name="description">
+                      {(field) => {
+                        const isInvalid =
+                          field.state.meta.isTouched &&
+                          !field.state.meta.isValid;
+                        return (
+                          <div className="space-y-1.5">
+                            <FieldLabel htmlFor={field.name}>
+                              Description
+                            </FieldLabel>
+                            <Textarea
+                              id={field.name}
+                              value={field.state.value}
+                              onBlur={field.handleBlur}
+                              onChange={(e) =>
+                                field.handleChange(e.target.value)
+                              }
+                              aria-invalid={isInvalid}
+                              placeholder="Describe the monument"
+                              className="min-h-[80px]"
+                            />
+                            {isInvalid && (
+                              <FieldError errors={field.state.meta.errors} />
+                            )}
+                          </div>
+                        );
+                      }}
+                    </form.Field>
+
+                    <form.Field name="analyticalDescription">
+                      {(field) => {
+                        const isInvalid =
+                          field.state.meta.isTouched &&
+                          !field.state.meta.isValid;
+                        return (
+                          <div className="space-y-1.5">
+                            <FieldLabel htmlFor={field.name}>
+                              Analytical Description
+                            </FieldLabel>
+                            <Textarea
+                              id={field.name}
+                              value={field.state.value}
+                              onBlur={field.handleBlur}
+                              onChange={(e) =>
+                                field.handleChange(e.target.value)
+                              }
+                              aria-invalid={isInvalid}
+                              placeholder="Describe the monument"
+                              className="min-h-[80px]"
+                            />
+                            {isInvalid && (
+                              <FieldError errors={field.state.meta.errors} />
+                            )}
+                          </div>
+                        );
+                      }}
+                    </form.Field>
+                  </div>
+
+                  {/* MONUMENT NUMBER + RECORD COMPLETE + VIEW MAP in a single row on lg */}
+                  <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-evenly lg:gap-4 pt-1">
+                    {/* Monument Number */}
+                    <form.Field name="monumentNumber">
+                      {(field) => {
+                        const isInvalid =
+                          field.state.meta.isTouched &&
+                          !field.state.meta.isValid;
+                        return (
+                          <Field
+                            orientation="horizontal"
+                            className="space-y-1.5 min-w-[60px] max-w-2xs "
+                          >
+                            <FieldLabel htmlFor={field.name}>
+                              Monument Number
+                            </FieldLabel>
+                            <Input
+                              id={field.name}
+                              value={field.state.value}
+                              onBlur={field.handleBlur}
+                              onChange={(e) =>
+                                field.handleChange(e.target.value)
+                              }
+                              aria-invalid={isInvalid}
+                              placeholder="monument num"
+                            />
+                            {isInvalid && (
+                              <FieldError errors={field.state.meta.errors} />
+                            )}
+                          </Field>
+                        );
+                      }}
+                    </form.Field>
+
+                    {/* Record Complete */}
+                    <div className="flex items-center gap-2">
                       <form.Field name="isRecordComplete">
                         {(field) => {
                           return (
@@ -236,16 +242,26 @@ export default function AMForm({ monument = null }) {
                         }}
                       </form.Field>
                     </div>
-                    <Button type="button">
-                      View Map
-                      <MapPin />
-                    </Button>
+
+                    {/* View Map Button */}
+                    <div className="flex justify-start lg:justify-end">
+                      <Button type="button">
+                        View Map
+                        <MapPin className="ml-1 h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </FieldGroup>
-                <div className="bg-muted border aspect-square w-50 h-50 rounded-xl"></div>
+
+                {/* RIGHT COLUMN – picture placeholder, wider but not taller than needed */}
+                <div className="w-full md:w-4xl flex justify-center md:justify-end">
+                  <div className="bg-muted rounded-xl w-full  aspect-video" />
+                </div>
               </div>
             </FieldSet>
           </FieldGroup>
+
+          {/* FROM HERE DOWN: EXACTLY YOUR ORIGINAL TABS SECTION */}
           <Tabs defaultValue="location" className="py-6 w-full">
             <TabsList className="flex flex-wrap lg:flex-row gap-2 h-auto">
               <TabsTrigger value="location">Location</TabsTrigger>
@@ -323,6 +339,7 @@ export default function AMForm({ monument = null }) {
               </Card>
             </TabsContent>
           </Tabs>
+
           <Button type="submit" className="mt-6">
             Submit
           </Button>
@@ -338,76 +355,4 @@ export default function AMForm({ monument = null }) {
       </CardContent>
     </Card>
   );
-}
-{
-  /* <TabsContent value="function" className="w-full lg:min-w-4xl">
-              <Card className="dark:drop-shadow-xl border-2">
-                <CardContent className="flex flex-col gap-8">
-                  <div className="flex flex-wrap flex-col md:flex-row md:justify-evenly gap-4 p-3">
-                    <form.Field name="function">
-                      {(field) => (
-                        <>
-                          <div className="rounded-xl border-2 shadow-2xl p-4 overflow-auto max-w-full md:min-w-[700px]">
-                            <Table>
-                              <TableHeader>
-                                <TableRow>
-                                  <TableHead>Chronology</TableHead>
-                                  <TableHead>Category</TableHead>
-                                  <TableHead>Type</TableHead>
-                                  <TableHead>Certainty</TableHead>
-                                </TableRow>
-                              </TableHeader>
-                              <TableBody>
-                                <TableRow className="min-w-[500px]">
-                                  <TableCell className="font-medium">
-                                    <SingleCheckbox
-                                      title="Chronology"
-                                      vocab={testVoc}
-                                      value={field.state.value}
-                                      onChange={field.setValue}
-                                    />
-                                  </TableCell>
-                                  <TableCell>
-                                    <SingleCheckbox
-                                      title="Category"
-                                      vocab={testVoc}
-                                      value={field.state.value}
-                                      onChange={field.setValue}
-                                    />
-                                  </TableCell>
-                                  <TableCell>
-                                    <SingleCheckbox
-                                      title="Type"
-                                      vocab={testVoc}
-                                      value={field.state.value}
-                                      onChange={field.setValue}
-                                    />
-                                  </TableCell>
-                                  <TableCell>
-                                    <SingleCheckbox
-                                      title="Certainty"
-                                      vocab={testVoc}
-                                      value={field.state.value}
-                                      onChange={field.setValue}
-                                    />
-                                  </TableCell>
-                                </TableRow>
-                              </TableBody>
-                            </Table>
-                          </div>
-                        </>
-                      )}
-                    </form.Field>
-                  </div>
-                </CardContent>
-                <CardFooter className="flex justify-end gap-2">
-                  <Button variant="secondary" type="button">
-                    Save changes
-                  </Button>
-                  <Button variant="outline" type="button">
-                    Reset
-                  </Button>
-                </CardFooter>
-              </Card>
-            </TabsContent> */
 }

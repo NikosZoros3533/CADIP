@@ -29,7 +29,7 @@ export default function MultiCheckbox({ title, vocab }) {
       <PopoverTrigger asChild>
         <Button
           aria-expanded={open}
-          className="w-[250px] justify-between"
+          className="max-w-[250px] w-full justify-between"
           role="combobox"
           variant="outline"
         >

@@ -20,9 +20,9 @@ import { entities as items } from "../lib/constants";
 
 export default function AppSidebar() {
   const { isMobile, toggleSidebar } = useSidebar();
+console.log(isMobile);
 
   const location = useLocation();
-
   return (
     <Sidebar collapsible={isMobile}>
       <SidebarContent>

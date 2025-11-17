@@ -14,6 +14,12 @@ export const monumentSchema = z.object({
     town: z.string().optional(),
     quarter: z.string().optional(),
   }),
+  function: z.object({
+    chronology: z.string().optional(),
+    category: z.string().optional(),
+    type: z.string().optional(),
+    certainty: z.string().optional(),
+  }),
   toponym: z.string().optional(),
   plotsDeclExpro: z.string().optional(),
 });
@@ -30,6 +36,12 @@ export const defaultMonumentValues = {
     district: "",
     town: "",
     quarter: "",
+  },
+  function: {
+    chronology: "",
+    category: "",
+    type: "",
+    certainty: "",
   },
   toponym: "",
   plotsDeclExpro: "",
