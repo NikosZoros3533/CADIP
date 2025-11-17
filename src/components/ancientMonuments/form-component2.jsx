@@ -45,7 +45,7 @@ export function AMFormCompact({ monument = null }) {
   });
 
   return (
-    <Card className="w-full max-w-7xl place-self-center p-3 md:p-4 lg:p-6 my-4 md:my-8 text-base ">
+    <Card className="w-full  max-w-7xl place-self-center p-3 md:p-4 lg:p-6 my-4 md:my-8 text-base ">
       <CardHeader className="flex flex-col w-full justify-center items-center pb-2">
         {monument ? (
           <>
@@ -254,7 +254,7 @@ export function AMFormCompact({ monument = null }) {
                 </FieldGroup>
 
                 {/* RIGHT COLUMN – picture placeholder, wider but not taller than needed */}
-                <div className="w-full md:w-4xl flex justify-center md:justify-end">
+                <div className="w-full lg:w-4xl flex justify-center md:justify-end">
                   <div className="bg-muted rounded-xl w-full  aspect-video" />
                 </div>
               </div>

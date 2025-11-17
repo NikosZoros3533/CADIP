@@ -24,7 +24,7 @@ console.log(isMobile);
 
   const location = useLocation();
   return (
-    <Sidebar collapsible={isMobile}>
+    <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center justify-between">
