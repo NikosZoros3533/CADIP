@@ -46,8 +46,8 @@ export default function AMForm({ monument = null }) {
   const form = useAppForm({
     ...monumentFormOpts,
     validators: {
-      onSubmit: monumentSchema,
       onChange: monumentSchema,
+      onSubmit: monumentSchema,
       onBlur: monumentSchema,
     },
     onSubmit: ({ value }) => {
@@ -290,7 +290,7 @@ export default function AMForm({ monument = null }) {
                         field.state.meta.isTouched && !field.state.meta.isValid;
                       return (
                         <>
-                          <FieldLabel htmlFor={field.name} >
+                          <FieldLabel htmlFor={field.name}>
                             Plots as Described on Declaration/Expropriation
                           </FieldLabel>
                           <Textarea
@@ -317,6 +317,7 @@ export default function AMForm({ monument = null }) {
                 </CardFooter>
               </Card>
             </TabsContent>
+            
           </Tabs>
           <Button type="submit" className="mt-6">
             Submit

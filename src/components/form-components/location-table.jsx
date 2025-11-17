@@ -35,6 +35,7 @@ const quarters = [
 
 export default function LocationTable() {
   const field = useFieldContext();
+  const location = field.state.value ?? {};
 
   const handleChange = (name, value) => {
     field.setValue((prev) => ({ ...prev, [name]: value }));
