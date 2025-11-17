@@ -23,15 +23,11 @@ import {
 } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
 import { entities } from "@/lib/constants";
-// import { CommandHeader } from "./app-command-header";
 
 export default function AppMenubar() {
   return (
-    //menumbar class when we put command:
-    //ml-[var(--sidebar-width)] w-[calc(98vw-var(--sidebar-width))]  md:justify-between
-
-    <Menubar className="flex justify-between fixed z-10 md:justify-end w-full">
-      <SidebarTrigger className="md:hidden" />
+    <Menubar className="flex justify-evenly fixed z-10 shrink-0  w-full">
+      <SidebarTrigger />
       <div className="flex items-center">
         <MenubarMenu>
           <MenubarTrigger>File</MenubarTrigger>
