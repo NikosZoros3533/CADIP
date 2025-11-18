@@ -30,6 +30,16 @@ const vocAcc = [
   { id: "2", labelEn: "Partially accessible with assistance" },
   { id: "3", labelEn: "Not accessible to visitors" },
 ];
+// const testVoc = [
+//   { id: "1", value: "nicosia", label: "Nicosia" },
+//   { id: "2", value: "larnaca", label: "Larnaca" },
+//   { id: "3", value: "limassol", label: "Limassol" },
+// ];
+// const locationData = [
+//   { district: "1", town: "2", quarter: "3" },
+//   { district: "2", town: "3", quarter: "1" },
+//   { district: "3", town: "1", quarter: "2" },
+// ];
 
 export function AMForm({ monument = null }) {
   const form = useAppForm({
@@ -45,7 +55,7 @@ export function AMForm({ monument = null }) {
   });
 
   return (
-    <Card className="w-full  max-w-7xl place-self-center p-3 md:p-4 lg:p-6 my-4 md:my-8 text-base ">
+    <Card className="w-full max-w-7xl mx-auto  p-3  md:p-4 lg:p-6 my-4 md:my-8 text-base ">
       <CardHeader className="flex flex-col w-full justify-center items-center pb-2">
         {monument ? (
           <>
@@ -71,9 +81,9 @@ export function AMForm({ monument = null }) {
         >
           <FieldGroup>
             <FieldSet>
-              <div className="flex flex-col md:flex-row w-full justify-between gap-6">
+              <div className="flex flex-col @md:flex-row w-full gap-6">
                 {/* LEFT COLUMN – more compact vertical spacing */}
-                <FieldGroup className="w-full md:max-w-3xl space-y-1">
+                <FieldGroup className="w-full md:flex-[2] space-y-1">
                   {/* Name */}
                   <form.Field name="name">
                     {(field) => {
@@ -254,8 +264,8 @@ export function AMForm({ monument = null }) {
                 </FieldGroup>
 
                 {/* RIGHT COLUMN – picture placeholder, wider but not taller than needed */}
-                <div className="w-full lg:w-4xl flex justify-center md:justify-end">
-                  <div className="bg-muted rounded-xl w-full  aspect-video" />
+                <div className="w-full md:flex-1 flex justify-center md:justify-end">
+                  <div className="bg-muted rounded-xl w-full  lg:max-w-md aspect-video" />
                 </div>
               </div>
             </FieldSet>
@@ -279,7 +289,7 @@ export function AMForm({ monument = null }) {
                 Recording Details
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="location" className="w-full lg:min-w-4xl">
+            <TabsContent value="location" className="w-full @lg:max-w-4xl">
               <Card className="dark:drop-shadow-xl border-2">
                 <CardContent className="flex flex-col gap-8">
                   <div className="flex flex-col sm:flex-row items-start justify-center sm:items-center gap-6">

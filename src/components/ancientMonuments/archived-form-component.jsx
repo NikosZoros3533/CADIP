@@ -29,31 +29,12 @@ import {
   monumentSchema,
 } from "@/lib/register-form/formUtils";
 import { useAppForm } from "@/hooks/forms/form";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../ui/table";
-import { SingleCheckbox } from "../vocabs/SingleCheckbox";
-
 const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
   { id: "2", labelEn: "Partially accessible with assistance" },
   { id: "3", labelEn: "Not accessible to visitors" },
 ];
-const testVoc = [
-  { id: "1", value: "nicosia", label: "Nicosia" },
-  { id: "2", value: "larnaca", label: "Larnaca" },
-  { id: "3", value: "limassol", label: "Limassol" },
-];
-const locationData = [
-  { district: "1", town: "2", quarter: "3" },
-  { district: "2", town: "3", quarter: "1" },
-  { district: "3", town: "1", quarter: "2" },
-];
+
 
 export default function ArchivedAMForm({ monument = null }) {
   const form = useAppForm({

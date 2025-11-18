@@ -32,7 +32,7 @@ export default function PagesLayout() {
             <Search className="md:ml-2" />
           </NavLink>
         </Button>
-        <Button asChild >
+        <Button asChild>
           <NavLink to={`${parentRoute}/add`}>
             <span className="hidden md:inline">New</span>
             <PlusCircle className="md:ml-2" />
@@ -41,7 +41,7 @@ export default function PagesLayout() {
       </div>
 
       <div className="flex flex-wrap justify-between gap-2 p-6 mx-auto max-w-7xl">
-        <AppBreadcrumb/>
+        <AppBreadcrumb />
         {!childRoute && (
           <div className="flex gap-0.5">
             <Button
@@ -61,8 +61,9 @@ export default function PagesLayout() {
           </div>
         )}
       </div>
-
-      <Outlet context={{ isGrid }} />
+      <div className="@container ">
+        <Outlet context={{ isGrid }} />
+      </div>
     </>
   );
 }

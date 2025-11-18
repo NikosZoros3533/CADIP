@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import {  X } from "lucide-react";
+import { Home, X } from "lucide-react";
 
 import {
   Sidebar,
@@ -8,22 +8,24 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "./ui/sidebar";
-import ThemeSwitch from "./theme-switcher";
 import { Button } from "./ui/button";
 import { entities as items } from "../lib/constants";
 
 export default function AppSidebar() {
   const { isMobile, toggleSidebar } = useSidebar();
-console.log(isMobile);
 
   const location = useLocation();
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar
+      collapsible="icon"
+      className="top-(--header-height) h-[calc(100svh-var(--header-height))]"
+    >
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center justify-between">
@@ -70,14 +72,6 @@ console.log(isMobile);
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="border-t">
-        <SidebarMenu>
-          <SidebarMenuItem className="w-full flex justify-between items-center">
-            <p>Nikos Zoros</p>
-            <ThemeSwitch />
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
     </Sidebar>
   );
 }

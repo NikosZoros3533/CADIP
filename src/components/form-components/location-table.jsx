@@ -35,13 +35,13 @@ const quarters = [
 
 export default function LocationTable() {
   const field = useFieldContext();
-  
+  const location= field.state.value || {};
 
   const handleChange = (name, value) => {
     field.setValue((prev) => ({ ...prev, [name]: value }));
   };
   return (
-    <div className="rounded-xl border-2 shadow-2xl p-4 overflow-auto max-w-full lg:min-w-[700px]">
+    <div className="rounded-xl border-2 shadow-2xl p-4 overflow-auto max-w-full @lg:max-w-[700px]">
       <Table>
         <TableHeader>
           <TableRow>
