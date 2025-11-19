@@ -20,11 +20,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { MapPin } from "lucide-react";
 import {
-  monumentFormOpts,
+  checkEntityDefaultKeys,
+  defaultMonumentValues,
   monumentSchema,
 } from "@/lib/register-form/formUtils";
 import { useAppForm } from "@/hooks/forms/form";
 import { Separator } from "../ui/separator";
+import { formOptions } from "@tanstack/react-form";
 
 const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
@@ -43,12 +45,21 @@ const vocAcc = [
 // ];
 
 export function AMForm({ monument = null }) {
+  const monumentValues = { ...defaultMonumentValues };
+
+  //Check keys existence and set default values
+  checkEntityDefaultKeys(monument, monumentValues);
+
+  const monumentFormOpts = formOptions({
+    defaultValues: monumentValues,
+  });
+
+  console.log(monumentFormOpts);
+
   const form = useAppForm({
     ...monumentFormOpts,
     validators: {
       onChange: monumentSchema,
-      onSubmit: monumentSchema,
-      onBlur: monumentSchema,
     },
     onSubmit: ({ value }) => {
       console.log(value);

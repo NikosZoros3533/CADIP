@@ -25,6 +25,7 @@ export const monumentSchema = z.object({
 });
 
 export const defaultMonumentValues = {
+  id: "",
   name: "",
   alternativeName: "",
   analyticalDescription: "",
@@ -47,6 +48,15 @@ export const defaultMonumentValues = {
   plotsDeclExpro: "",
 };
 
-export const monumentFormOpts = formOptions({
-  defaultValues: defaultMonumentValues,
-});
+export function checkEntityDefaultKeys(monument, defaultValues) {
+  if (monument) {
+    // assign only keys that exist in defaultMonumentValues
+    for (const key of Object.keys(monument)) {
+      if (Object.prototype.hasOwnProperty.call(defaultValues, key)) {
+        defaultValues[key] = monument[key];
+      } else {
+        console.log(`Monument has unexpected property "${key}"`, monument[key]);
+      }
+    }
+  }
+}
