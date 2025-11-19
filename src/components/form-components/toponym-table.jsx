@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { SingleCheckbox } from "../vocabs/SingleCheckbox";
+import { SingleCheckbox } from "./vocabs/SingleCheckbox";
 
 const toponyms = [
   { id: "1", value: "ancient_city", label: "Ancient City" },

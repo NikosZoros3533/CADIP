@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { SingleCheckbox } from "../vocabs/SingleCheckbox";
+import { SingleCheckbox } from "./vocabs/SingleCheckbox";
 import { useFieldContext } from "@/hooks/forms/form-context";
 
 const districts = [
@@ -35,7 +35,7 @@ const quarters = [
 
 export default function LocationTable() {
   const field = useFieldContext();
-  const location= field.state.value || {};
+  const location = field.state.value || {};
 
   const handleChange = (name, value) => {
     field.setValue((prev) => ({ ...prev, [name]: value }));

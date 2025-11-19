@@ -24,6 +24,7 @@ import {
   monumentSchema,
 } from "@/lib/register-form/formUtils";
 import { useAppForm } from "@/hooks/forms/form";
+import { Separator } from "../ui/separator";
 
 const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
@@ -55,7 +56,7 @@ export function AMForm({ monument = null }) {
   });
 
   return (
-    <Card className="w-full max-w-7xl mx-auto  p-3  md:p-4 lg:p-6 my-4 md:my-8 text-base ">
+    <Card className="w-full  mx-auto  p-3  md:p-4 lg:p-6 my-4 md:my-8 text-base ">
       <CardHeader className="flex flex-col w-full justify-center items-center pb-2">
         {monument ? (
           <>
@@ -71,7 +72,7 @@ export function AMForm({ monument = null }) {
           </>
         )}
       </CardHeader>
-
+      <Separator />
       <CardContent className="place-self-start w-full max-w-full pt-2 pb-4">
         <form
           onSubmit={(e) => {
@@ -91,7 +92,9 @@ export function AMForm({ monument = null }) {
                         field.state.meta.isTouched && !field.state.meta.isValid;
                       return (
                         <div className="space-y-1.5">
-                          <FieldLabel htmlFor={field.name}>Name</FieldLabel>
+                          <FieldLabel htmlFor={field.name}>
+                            Name<span className="text-destructive">*</span>
+                          </FieldLabel>
                           <Input
                             id={field.name}
                             value={field.state.value}
@@ -147,6 +150,7 @@ export function AMForm({ monument = null }) {
                           <div className="space-y-1.5">
                             <FieldLabel htmlFor={field.name}>
                               Description
+                              <span className="text-destructive">*</span>
                             </FieldLabel>
                             <Textarea
                               id={field.name}
@@ -222,6 +226,7 @@ export function AMForm({ monument = null }) {
                               }
                               aria-invalid={isInvalid}
                               placeholder="monument num"
+                              autoComplete="off"
                             />
                             {isInvalid && (
                               <FieldError errors={field.state.meta.errors} />
@@ -255,7 +260,7 @@ export function AMForm({ monument = null }) {
 
                     {/* View Map Button */}
                     <div className="flex justify-start lg:justify-end">
-                      <Button type="button">
+                      <Button type="button" variant="secondary">
                         View Map
                         <MapPin className="ml-1 h-4 w-4" />
                       </Button>
@@ -289,7 +294,7 @@ export function AMForm({ monument = null }) {
                 Recording Details
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="location" className="w-full @lg:max-w-4xl">
+            <TabsContent value="location" className="w-full @lg:max-w-7xl">
               <Card className="dark:drop-shadow-xl border-2">
                 <CardContent className="flex flex-col gap-8">
                   <div className="flex flex-col sm:flex-row items-start justify-center sm:items-center gap-6">

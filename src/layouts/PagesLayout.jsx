@@ -61,7 +61,7 @@ export default function PagesLayout() {
           </div>
         )}
       </div>
-      <div className="@container ">
+      <div className="@container px-2 md:px-6 lg:px-12 mx-auto">
         <Outlet context={{ isGrid }} />
       </div>
     </>

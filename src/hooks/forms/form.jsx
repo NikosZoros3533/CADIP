@@ -1,6 +1,6 @@
 import { createFormHook } from "@tanstack/react-form";
 import { fieldContext, formContext } from "./form-context";
-import MultiCheckbox from "@/components/vocabs/MultiCheckbox";
+import MultiCheckbox from "@/components/form-components/vocabs/MultiCheckbox";
 import LocationTable from "@/components/form-components/location-table";
 import ToponymTable from "@/components/form-components/toponym-table";
 
