@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, X } from "lucide-react";
+import { CircleUserRound, Home, X } from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
@@ -27,7 +28,10 @@ export default function AppSidebar() {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem className="flex items-center my-2 justify-between border-b pb-4">
-            <SidebarMenuButton asChild  className={location.pathname === "/" ? "text-sidebar-accent" : ""}>
+            <SidebarMenuButton
+              asChild
+              className={location.pathname === "/" ? "text-sidebar-accent" : ""}
+            >
               <Link to="/">
                 <Home />
                 <span className="font-bold text-base">CADIP</span>
@@ -55,7 +59,11 @@ export default function AppSidebar() {
                   <SidebarMenuButton
                     asChild
                     // isActive={location.pathname.includes(item.url)}
-                    className={location.pathname.includes(item.url) ? "text-sidebar-accent" : ""}
+                    className={
+                      location.pathname.includes(item.url)
+                        ? "text-sidebar-accent"
+                        : ""
+                    }
                     onClick={() => {
                       if (isMobile) {
                         toggleSidebar();
@@ -73,6 +81,21 @@ export default function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              asChild
+            >
+              <div className="flex items-center gap-2">
+                <CircleUserRound />
+                <span>Nikos Zoros</span>
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
