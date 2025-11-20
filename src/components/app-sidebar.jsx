@@ -4,10 +4,8 @@ import { Home, X } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -26,17 +24,15 @@ export default function AppSidebar() {
       collapsible="icon"
       className="top-(--header-height) h-[calc(100svh-var(--header-height))]"
     >
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-base mb-6 py-6 border-b rounded-none flex items-center justify-between">
-            <Link
-              to="/"
-              className={
-                location.pathname === "/" ? "font-bold text-primary" : ""
-              }
-            >
-              CADIP
-            </Link>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem className="flex items-center my-2 justify-between border-b pb-4">
+            <SidebarMenuButton asChild  className={location.pathname === "/" ? "text-sidebar-accent" : ""}>
+              <Link to="/">
+                <Home />
+                <span className="font-bold text-base">CADIP</span>
+              </Link>
+            </SidebarMenuButton>
             {isMobile && (
               <Button
                 variant="primary"
@@ -47,14 +43,19 @@ export default function AppSidebar() {
                 <X />
               </Button>
             )}
-          </SidebarGroupLabel>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title} className="py-2">
                   <SidebarMenuButton
                     asChild
-                    isActive={location.pathname.includes(item.url)}
+                    // isActive={location.pathname.includes(item.url)}
+                    className={location.pathname.includes(item.url) ? "text-sidebar-accent" : ""}
                     onClick={() => {
                       if (isMobile) {
                         toggleSidebar();

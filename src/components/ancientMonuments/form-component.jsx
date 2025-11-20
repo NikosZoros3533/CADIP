@@ -213,42 +213,41 @@ export function AMForm({ monument = null }) {
                   </div>
 
                   {/* MONUMENT NUMBER + RECORD COMPLETE + VIEW MAP in a single row on lg */}
-                  <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-evenly lg:gap-4 pt-1">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-4 pt-1">
                     {/* Monument Number */}
-                    <form.Field name="monumentNumber">
-                      {(field) => {
-                        const isInvalid =
-                          field.state.meta.isTouched &&
-                          !field.state.meta.isValid;
-                        return (
-                          <Field
-                            orientation="horizontal"
-                            className="space-y-1.5 min-w-[60px] max-w-2xs "
-                          >
-                            <FieldLabel htmlFor={field.name}>
-                              Monument Number
-                            </FieldLabel>
-                            <Input
-                              id={field.name}
-                              value={field.state.value}
-                              onBlur={field.handleBlur}
-                              onChange={(e) =>
-                                field.handleChange(e.target.value)
-                              }
-                              aria-invalid={isInvalid}
-                              placeholder="monument num"
-                              autoComplete="off"
-                            />
-                            {isInvalid && (
-                              <FieldError errors={field.state.meta.errors} />
-                            )}
-                          </Field>
-                        );
-                      }}
-                    </form.Field>
+                    <div className="lg:flex-1 max-w-xs">
+                      <form.Field name="monumentNumber">
+                        {(field) => {
+                          const isInvalid =
+                            field.state.meta.isTouched &&
+                            !field.state.meta.isValid;
+                          return (
+                            <Field orientation="horizontal">
+                              <FieldLabel htmlFor={field.name}>
+                                Monument Number
+                              </FieldLabel>
+                              <Input
+                                id={field.name}
+                                value={field.state.value}
+                                onBlur={field.handleBlur}
+                                onChange={(e) =>
+                                  field.handleChange(e.target.value)
+                                }
+                                aria-invalid={isInvalid}
+                                placeholder="monument num"
+                                autoComplete="off"
+                              />
+                              {isInvalid && (
+                                <FieldError errors={field.state.meta.errors} />
+                              )}
+                            </Field>
+                          );
+                        }}
+                      </form.Field>
+                    </div>
 
                     {/* Record Complete */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 lg:flex-none mt-1 lg:mt-0">
                       <form.Field name="isRecordComplete">
                         {(field) => {
                           return (
@@ -270,7 +269,7 @@ export function AMForm({ monument = null }) {
                     </div>
 
                     {/* View Map Button */}
-                    <div className="flex justify-start lg:justify-end">
+                    <div className="flex justify-start lg:justify-end lg:flex-none mt-1 lg:mt-0">
                       <Button type="button" variant="secondary">
                         View Map
                         <MapPin className="ml-1 h-4 w-4" />
