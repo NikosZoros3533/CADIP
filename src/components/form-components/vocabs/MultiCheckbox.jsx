@@ -17,7 +17,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useFieldContext } from "@/hooks/forms/form-context";
 
-export default function MultiCheckbox({ title, vocab }) {
+export default function MultiCheckbox({ title, vocab, disabled }) {
   const [open, setOpen] = useState(false);
   const field = useFieldContext();
 
@@ -32,6 +32,7 @@ export default function MultiCheckbox({ title, vocab }) {
           className="max-w-[250px] w-full justify-between"
           role="combobox"
           variant="outline"
+          disabled={disabled}
         >
           {field.state.value.length > 0 ? (
             <span>

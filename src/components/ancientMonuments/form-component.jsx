@@ -27,6 +27,7 @@ import {
 import { useAppForm } from "@/hooks/forms/form";
 import { Separator } from "../ui/separator";
 import { formOptions } from "@tanstack/react-form";
+import { useState } from "react";
 
 const vocAcc = [
   { id: "1", labelEn: "Fully accessible site" },
@@ -46,6 +47,7 @@ const vocAcc = [
 
 export function AMForm({ monument = null }) {
   const monumentValues = { ...defaultMonumentValues };
+  const [editable, setEditable] = useState(!monument);
 
   //Check keys existence and set default values
   checkEntityDefaultKeys(monument, monumentValues);
@@ -114,6 +116,7 @@ export function AMForm({ monument = null }) {
                             aria-invalid={isInvalid}
                             placeholder="Castle of Limassol"
                             autoComplete="off"
+                            disabled={!editable}
                           />
                           {isInvalid && (
                             <FieldError errors={field.state.meta.errors} />
@@ -141,6 +144,7 @@ export function AMForm({ monument = null }) {
                             placeholder="Castle of Limassol"
                             aria-invalid={isInvalid}
                             className="min-h-[70px]"
+                            disabled={!editable}
                           />
                           {isInvalid && (
                             <FieldError errors={field.state.meta.errors} />
@@ -173,6 +177,7 @@ export function AMForm({ monument = null }) {
                               aria-invalid={isInvalid}
                               placeholder="Describe the monument"
                               className="min-h-[80px]"
+                              disabled={!editable}
                             />
                             {isInvalid && (
                               <FieldError errors={field.state.meta.errors} />
@@ -202,6 +207,7 @@ export function AMForm({ monument = null }) {
                               aria-invalid={isInvalid}
                               placeholder="Describe the monument"
                               className="min-h-[80px]"
+                              disabled={!editable}
                             />
                             {isInvalid && (
                               <FieldError errors={field.state.meta.errors} />
@@ -213,41 +219,43 @@ export function AMForm({ monument = null }) {
                   </div>
 
                   {/* MONUMENT NUMBER + RECORD COMPLETE + VIEW MAP in a single row on lg */}
-                  <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-4 pt-1">
+                  <div className="flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-evenly xl:gap-4 pt-1">
                     {/* Monument Number */}
-                    <div className="lg:flex-1 max-w-xs">
-                      <form.Field name="monumentNumber">
-                        {(field) => {
-                          const isInvalid =
-                            field.state.meta.isTouched &&
-                            !field.state.meta.isValid;
-                          return (
-                            <Field orientation="horizontal">
-                              <FieldLabel htmlFor={field.name}>
-                                Monument Number
-                              </FieldLabel>
-                              <Input
-                                id={field.name}
-                                value={field.state.value}
-                                onBlur={field.handleBlur}
-                                onChange={(e) =>
-                                  field.handleChange(e.target.value)
-                                }
-                                aria-invalid={isInvalid}
-                                placeholder="monument num"
-                                autoComplete="off"
-                              />
-                              {isInvalid && (
-                                <FieldError errors={field.state.meta.errors} />
-                              )}
-                            </Field>
-                          );
-                        }}
-                      </form.Field>
-                    </div>
+                    <form.Field name="monumentNumber">
+                      {(field) => {
+                        const isInvalid =
+                          field.state.meta.isTouched &&
+                          !field.state.meta.isValid;
+                        return (
+                          <Field
+                            orientation="horizontal"
+                            className="space-y-1.5 min-w-[60px] max-w-2xs "
+                          >
+                            <FieldLabel htmlFor={field.name}>
+                              Monument Number
+                            </FieldLabel>
+                            <Input
+                              id={field.name}
+                              value={field.state.value}
+                              onBlur={field.handleBlur}
+                              onChange={(e) =>
+                                field.handleChange(e.target.value)
+                              }
+                              aria-invalid={isInvalid}
+                              placeholder="monument num"
+                              autoComplete="off"
+                              disabled={!editable}
+                            />
+                            {isInvalid && (
+                              <FieldError errors={field.state.meta.errors} />
+                            )}
+                          </Field>
+                        );
+                      }}
+                    </form.Field>
 
                     {/* Record Complete */}
-                    <div className="flex items-center gap-2 lg:flex-none mt-1 lg:mt-0">
+                    <div className="flex items-center gap-2">
                       <form.Field name="isRecordComplete">
                         {(field) => {
                           return (
@@ -258,6 +266,7 @@ export function AMForm({ monument = null }) {
                                 onCheckedChange={(checked) =>
                                   field.handleChange(checked === true)
                                 }
+                                disabled={!editable}
                               />
                               <Label htmlFor={field.name}>
                                 Record Complete
@@ -269,19 +278,23 @@ export function AMForm({ monument = null }) {
                     </div>
 
                     {/* View Map Button */}
-                    <div className="flex justify-start lg:justify-end lg:flex-none mt-1 lg:mt-0">
-                      <Button type="button" variant="secondary">
-                        View Map
-                        <MapPin className="ml-1 h-4 w-4" />
-                      </Button>
-                    </div>
+                    {monument && (
+                      <div className="flex justify-start lg:justify-end">
+                        <Button type="button" variant="secondary">
+                          View Map
+                          <MapPin className="ml-1 h-4 w-4" />
+                        </Button>
+                      </div>
+                    )}
                   </div>
                 </FieldGroup>
 
                 {/* RIGHT COLUMN – picture placeholder, wider but not taller than needed */}
-                <div className="w-full md:flex-1 flex justify-center md:justify-end">
-                  <div className="bg-muted rounded-xl w-full  lg:max-w-md aspect-video" />
-                </div>
+                {monument && (
+                  <div className="w-full md:flex-1 flex justify-center md:justify-end">
+                    <div className="bg-muted rounded-xl w-full  lg:max-w-md aspect-video" />
+                  </div>
+                )}
               </div>
             </FieldSet>
           </FieldGroup>
@@ -316,6 +329,7 @@ export function AMForm({ monument = null }) {
                             <field.MultiCheckbox
                               title="accessibility"
                               vocab={vocAcc}
+                              disabled={!editable}
                             />
                           </>
                         );
@@ -326,14 +340,14 @@ export function AMForm({ monument = null }) {
                     <form.AppField name="location">
                       {(field) => (
                         <>
-                          <field.LocationTable />
+                          <field.LocationTable disabled={!editable} />
                         </>
                       )}
                     </form.AppField>
                     <form.AppField name="toponym">
                       {(field) => (
                         <>
-                          <field.ToponymTable />
+                          <field.ToponymTable disabled={!editable} />
                         </>
                       )}
                     </form.AppField>
@@ -355,6 +369,7 @@ export function AMForm({ monument = null }) {
                             onBlur={field.handleBlur}
                             onChange={(e) => field.handleChange(e.target.value)}
                             aria-invalid={isInvalid}
+                            disabled={!editable}
                           />
                         </>
                       );
@@ -364,18 +379,29 @@ export function AMForm({ monument = null }) {
               </Card>
             </TabsContent>
           </Tabs>
+          <div className="flex w-full gap-2 mt-4">
+            <Button type="submit">Submit</Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => {
+                form.reset();
+                setEditable(false);
+              }}
+            >
+              Reset All
+            </Button>
 
-          <Button type="submit" className="mt-6">
-            Submit
-          </Button>
-          <Button
-            type="button"
-            className="ml-2"
-            variant="outline"
-            onClick={() => form.reset()}
-          >
-            Reset All
-          </Button>
+            {!editable && (
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setEditable(true)}
+              >
+                Edit All
+              </Button>
+            )}
+          </div>
         </form>
       </CardContent>
     </Card>

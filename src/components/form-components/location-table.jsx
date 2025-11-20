@@ -33,7 +33,7 @@ const quarters = [
   { id: "3", value: "harbor_area", label: "Harbor Area" },
 ];
 
-export default function LocationTable() {
+export default function LocationTable({ disabled }) {
   const field = useFieldContext();
   const location = field.state.value || {};
 
@@ -42,7 +42,7 @@ export default function LocationTable() {
   };
   return (
     <div className="rounded-xl border-2 shadow-2xl p-4 overflow-auto max-w-full @lg:max-w-[700px]">
-      <Table>
+      <Table className={disabled ? "opacity-80 pointer-events-none" : ""}>
         <TableHeader>
           <TableRow>
             <TableHead>District</TableHead>

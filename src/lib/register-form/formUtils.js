@@ -55,7 +55,10 @@ export function checkEntityDefaultKeys(monument, defaultValues) {
       if (Object.prototype.hasOwnProperty.call(defaultValues, key)) {
         defaultValues[key] = monument[key];
       } else {
-        console.log(`Monument has unexpected property "${key}"`, monument[key]);
+        console.warn(
+          `Monument has unexpected property "${key}"`,
+          monument[key]
+        );
       }
     }
   }

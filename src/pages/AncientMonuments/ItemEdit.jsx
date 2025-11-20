@@ -5,18 +5,18 @@ const object = {
   id: "1",
   name: "Castle of Limassol",
   description: "An ancient castle located in Limassol.",
-  alternativeName: "",
-  analyticalDescription: "",
+  alternativeName: "alternate castle name",
+  analyticalDescription: "Analytical description of the castle.",
   monumentNumber: "XX.12354",
   isRecordComplete: true,
-  accessibilities: [],
+  accessibilities: ["1", "2"],
   location: {
     district: "nicosia",
-    town: "",
-    quarter: "",
+    town: "nicosia",
+    quarter: "new_town",
   },
   toponym: "ancient_city",
-  plotsDeclExproee: "asdasdasd",
+  plotsDeclExpro: "Plot details here.",
 };
 
 export default function () {
