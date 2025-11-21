@@ -16,6 +16,9 @@ import {
 import { Button } from "./ui/button";
 import { entities as items } from "../lib/constants";
 
+let linkActivated = "text-sidebar-accent hover:bg-sidebar-background-hover hover:text-sidebar-accent";
+let linkNotActivated = "text-sidebar-foreground hover:bg-sidebar-background-hover hover:text-secondary";
+
 export default function AppSidebar() {
   const { isMobile, toggleSidebar } = useSidebar();
 
@@ -30,7 +33,7 @@ export default function AppSidebar() {
           <SidebarMenuItem className="flex items-center my-2 justify-between border-b pb-4">
             <SidebarMenuButton
               asChild
-              className={location.pathname === "/" ? "text-sidebar-accent" : ""}
+              className={location.pathname === "/" ? linkActivated : linkNotActivated}
             >
               <Link to="/">
                 <Home />
@@ -58,11 +61,10 @@ export default function AppSidebar() {
                 <SidebarMenuItem key={item.title} className="py-2">
                   <SidebarMenuButton
                     asChild
-                    // isActive={location.pathname.includes(item.url)}
                     className={
                       location.pathname.includes(item.url)
-                        ? "text-sidebar-accent"
-                        : ""
+                        ? linkActivated
+                        : linkNotActivated
                     }
                     onClick={() => {
                       if (isMobile) {
@@ -85,7 +87,7 @@ export default function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              className= {linkNotActivated}
               asChild
             >
               <div className="flex items-center gap-2">
