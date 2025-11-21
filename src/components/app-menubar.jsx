@@ -29,7 +29,7 @@ export default function AppMenubar() {
   return (
     <header className="sticky top-0 z-50 flex w-full items-center">
       <Menubar className="flex h-(--header-height) w-full items-center justify-between ">
-        <SidebarTrigger className="ml-1.5 px-2"/>
+        <SidebarTrigger className="ml-1.5 px-2" />
         <div className="flex items-center">
           <MenubarMenu>
             <MenubarTrigger>File</MenubarTrigger>

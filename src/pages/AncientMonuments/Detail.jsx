@@ -1,4 +1,4 @@
-import { getMonument } from "@/services/api";
+import { getMonument } from "@/services/ancient-monuments/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 

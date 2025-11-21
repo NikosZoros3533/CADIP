@@ -9,7 +9,7 @@ import { ScrollArea } from "./ui/scroll-area";
 import { useNavigate } from "react-router-dom";
 import TableComponent from "./table-component";
 import { useEffect, useState } from "react";
-import { getMonuments } from "@/services/api";
+import { getMonuments } from "@/services/ancient-monuments/api";
 
 export default function CollapsibleComponent({ entity }) {
   const [objects, setObjects] = useState({});

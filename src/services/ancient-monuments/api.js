@@ -1,14 +1,13 @@
-import { entities, vocabs } from "@/lib/constants";
+import { entities} from "@/lib/constants";
+import { BASE_API_URL } from "@/lib/http";
 
 
-const BASE_URL = "http://localhost:8000/api";
 
 const ancientMonumentUrl = entities[0].fetchUrl;
-const accessibilityVocabUrl = vocabs[0].fetchUrl;
 
 export async function getMonuments() {
   try {
-    const res = await fetch(`${BASE_URL}/${ancientMonumentUrl}`);
+    const res = await fetch(`${BASE_API_URL}/${ancientMonumentUrl}`);
     if (!res.ok) {
       throw new Error(`Response status: ${res.status}`);
     }
@@ -23,7 +22,7 @@ export async function getMonuments() {
 
 export async function getMonument(id) {
   try {
-    const res = await fetch(`${BASE_URL}/${ancientMonumentUrl}/${id}`);
+    const res = await fetch(`${BASE_API_URL}/${ancientMonumentUrl}/${id}`);
     if (!res.ok) {
       throw new Error(`Response status: ${res.status}`);
     }
@@ -38,7 +37,7 @@ export async function getMonument(id) {
 
 export async function postMonument(body) {
   try {
-    const res = await fetch(`${BASE_URL}/${ancientMonumentUrl}`, {
+    const res = await fetch(`${BASE_API_URL}/${ancientMonumentUrl}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/ld+json",
@@ -57,7 +56,7 @@ export async function postMonument(body) {
 
 export async function patchMonument(id, body) {
   try {
-    const res = await fetch(`${BASE_URL}/${ancientMonumentUrl}/${id}`, {
+    const res = await fetch(`${BASE_API_URL}/${ancientMonumentUrl}/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/ld+json",
@@ -77,7 +76,7 @@ export async function patchMonument(id, body) {
 
 export async function deleteMonument(id) {
   try {
-    const res = await fetch(`${BASE_URL}/${ancientMonumentUrl}/${id}`, {
+    const res = await fetch(`${BASE_API_URL}/${ancientMonumentUrl}/${id}`, {
       method: "DELETE",
     });
     if (!res.ok) {
@@ -92,7 +91,7 @@ export async function deleteMonument(id) {
 
 export async function getAccessibilities() {
   try {
-    const res = await fetch(`${BASE_URL}/${accessibilityVocabUrl}`);
+    const res = await fetch(`${BASE_API_URL}/${accessibilityVocabUrl}`);
     if (!res.ok) {
       throw new Error(`Response status: ${res.status}`);
     }

@@ -1,7 +1,7 @@
 import GridLayout from "../../components/grid-layout";
 import { useOutletContext } from "react-router-dom";
 import TableComponent from "@/components/table-component";
-import { getMonuments } from "@/services/api";
+import { getMonuments } from "@/services/ancient-monuments/api";
 import { useEffect, useState } from "react";
 import AMCardComponent from "@/components/ancientMonuments/card-component";
 import { Spinner } from "@/components/ui/spinner";
